@@ -1,10 +1,6 @@
 [build]
   command = "npm run build"
   publish = "dist/psychologist"
-  functions = "netlify/functions"
-  
-[functions]
-  directory = "netlify/functions"
 
 [[redirects]]
   from = "/*"
