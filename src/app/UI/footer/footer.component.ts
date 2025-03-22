@@ -46,17 +46,19 @@ export class FooterComponent implements OnInit {
     this.isContactPage = this.currentUrl === '/contatti';
   }
 
-  /*openWhatsapp(event: Event): void {
+  onWhatsAppClick(event: Event): void {
     event.preventDefault();
+
     this.recaptchaService.executeRecaptcha('whatsapp', () => {
       window.open(getTextWhatsapp(), '_blank');
     });
   }
 
-  openMailto(event: Event): void {
+  onMailtoClick(event: Event): void {
     event.preventDefault();
-    this.recaptchaService.executeRecaptcha('mailTo', () => {
+
+    this.recaptchaService.executeRecaptcha('mailto', () => {
       window.location.href = getMailtoLink();
     });
-  }*/
+  }
 }

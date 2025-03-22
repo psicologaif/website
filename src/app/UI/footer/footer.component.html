@@ -46,10 +46,9 @@
           <li class="flex align-items-center gap-3 mb-2">
             <i class="pi pi-whatsapp" style="color: #25d366"></i>
             <a
-              class="g-recaptcha no-underline cursor-pointer"
-              data-sitekey="6LeR1_wqAAAAAJaGf5BzrMenKEzwqFQ0oE8mYA8t"
-              data-callback="onWhatsAppSubmit"
-              data-action="whatsapp"
+              href="#"
+              class="no-underline cursor-pointer"
+              (click)="onWhatsAppClick($event)"
             >
               <p class="m-0">Contattami su WhatsApp</p>
             </a>
@@ -57,10 +56,9 @@
           <li class="flex align-items-center gap-3">
             <i class="pi pi-envelope"></i>
             <a
-              class="g-recaptcha no-underline cursor-pointer"
-              data-sitekey="6LeR1_wqAAAAAJaGf5BzrMenKEzwqFQ0oE8mYA8t"
-              data-callback="onMailtoSubmit"
-              data-action="mailto"
+              href="#"
+              class="no-underline cursor-pointer"
+              (click)="onMailtoClick($event)"
             >
               <p class="m-0">{{ contactInfo.email }}</p>
             </a>
