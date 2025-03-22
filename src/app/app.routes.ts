@@ -4,6 +4,7 @@ import {ChiSonoComponent} from "./components/chi-sono/chi-sono.component";
 import {ProgettiComponent} from "./components/progetti/progetti.component";
 import {ServiziComponent} from "./components/servizi/servizi.component";
 import { ContattiComponent } from "./components/contatti/contatti.component";
+import { NotFoundComponent } from "./components/not-found/not-found.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,4 +13,5 @@ export const routes: Routes = [
   { path: 'progetti', component: ProgettiComponent },
   { path: 'servizi', component: ServiziComponent },
   { path: 'contatti', component: ContattiComponent },
+  { path: '**', component: NotFoundComponent },
 ]
