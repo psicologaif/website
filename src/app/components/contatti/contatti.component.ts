@@ -1,11 +1,22 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { contactInfo, getMailtoLink, getTextWhatsapp } from 'src/app/text';
+import { CaptchaService } from 'src/app/services/captcha.service';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-contatti',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    DialogModule,
+    InputTextModule,
+    ButtonModule,
+    FormsModule,
+  ],
   templateUrl: './contatti.component.html',
   styleUrls: ['./contatti.component.css'],
 })
@@ -13,4 +24,16 @@ export class ContattiComponent {
   contactInfo = contactInfo;
   getMailtoLink = getMailtoLink;
   getTextWhatsapp = getTextWhatsapp;
+
+  constructor(public captchaService: CaptchaService) {}
+
+  openWhatsApp(event: Event): void {
+    event.preventDefault();
+    this.captchaService.showSimpleCaptcha('whatsapp');
+  }
+
+  openEmail(event: Event): void {
+    event.preventDefault();
+    this.captchaService.showSimpleCaptcha('email');
+  }
 }

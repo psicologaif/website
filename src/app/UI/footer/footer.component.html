@@ -44,7 +44,7 @@
           style="max-width: fit-content"
         >
           <li class="flex align-items-center gap-3 mb-2">
-            <i class="pi pi-whatsapp" style="color: #25d366"></i>
+            <i class="pi pi-whatsapp"></i>
             <a href="#" class="no-underline" (click)="openWhatsApp($event)">
               <p class="m-0">Contattami su WhatsApp</p>
             </a>
@@ -69,14 +69,14 @@
 </div>
 
 <p-dialog
-  [(visible)]="showCaptcha"
+  [(visible)]="captchaService.showCaptcha"
   [modal]="true"
-  header="Verifica anti-spam"
+  header="Verifica"
   [style]="{ width: '300px' }"
 >
   <div class="flex flex-column gap-3">
-    <p>{{ captchaQuestion }}</p>
-    <input type="number" pInputText [(ngModel)]="userAnswer" />
-    <button pButton label="Verifica" (click)="verifyCaptcha()"></button>
+    <p>{{ captchaService.captchaQuestion }}</p>
+    <input type="number" pInputText [(ngModel)]="captchaService.userAnswer" />
+    <button pButton label="Verifica" (click)="captchaService.verifyCaptcha()"></button>
   </div>
 </p-dialog>

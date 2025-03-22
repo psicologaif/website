@@ -2,7 +2,7 @@
 <div
   class="navbar flex flex-wrap justify-content-center align-items-center col-12 gap-4 p-3"
 >
-  <p class="navbar-brand m-0">Seguimi su:</p>
+  <p class="navbar-brand m-0">Rimaniamo in contatto su</p>
 
   <div class="item">
     <a
@@ -44,8 +44,11 @@
   >
     <li class="flex flex-column md:flex-row align-items-center">
       <img ngSrc="assets/img/IMG_8850.jpeg" alt="logo" height="90" width="90" />
-      <p class="mt-2 md:mt-0 md:ml-2 text-center md:text-left">
-        DOTT.SSA FRALE IOANA
+      <p
+        class="mt-2 md:mt-0 md:ml-2 text-center md:text-left"
+        style="font-family: 'Dancing Script', cursive; font-size: 1.5rem"
+      >
+        Dott.ssa Frale Ioana
       </p>
     </li>
   </div>
@@ -55,13 +58,17 @@
     (click)="toggleMenu()"
     type="button"
   >
-    <i class="pi" [ngClass]="menuVisible ? 'pi-times' : 'pi-bars'"></i> Menu
+    <i
+      class="pi"
+      [ngClass]="menuVisible ? 'pi-times' : 'pi-bars'"
+      style="color: black"
+    ></i>
   </button>
 
   <ul
     class="flex flex-column md:flex-row justify-content-center align-items-center w-full md:w-auto menu-transition fix-center"
-    [ngClass]="{ 'show': menuVisible, 'md:flex': true }"
-    style="margin: 0; padding: 0;"
+    [ngClass]="{ show: menuVisible, 'md:flex': true }"
+    style="margin: 0; padding: 0"
   >
     <div
       class="flex flex-column md:flex-row justify-content-evenly align-items-center gap-3"

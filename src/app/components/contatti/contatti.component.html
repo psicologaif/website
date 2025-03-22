@@ -34,15 +34,15 @@
           <p class="m-0">+39 3286739086</p>
         </a>
       </li>
-      <li class="flex align-items-center gap-3 mb-3">
-        <i class="pi pi-whatsapp" style="color: #25d366"></i>
-        <a [href]="getTextWhatsapp()">
+      <li class="flex align-items-center gap-3 mb-2">
+        <i class="pi pi-whatsapp"></i>
+        <a href="#" class="no-underline" (click)="openWhatsApp($event)">
           <p class="m-0">Contattami su WhatsApp</p>
         </a>
       </li>
-      <li class="flex align-items-center gap-3 mb-3">
+      <li class="flex align-items-center gap-3">
         <i class="pi pi-envelope"></i>
-        <a [href]="getMailtoLink()">
+        <a href="#" class="no-underline" (click)="openEmail($event)">
           <p class="m-0">{{ contactInfo.email }}</p>
         </a>
       </li>
@@ -57,3 +57,20 @@
     </ul>
   </div>
 </div>
+
+<p-dialog
+  [(visible)]="captchaService.showCaptcha"
+  [modal]="true"
+  header="Verifica"
+  [style]="{ width: '300px' }"
+>
+  <div class="flex flex-column gap-3">
+    <p>{{ captchaService.captchaQuestion }}</p>
+    <input type="number" pInputText [(ngModel)]="captchaService.userAnswer" />
+    <button
+      pButton
+      label="Verifica"
+      (click)="captchaService.verifyCaptcha()"
+    ></button>
+  </div>
+</p-dialog>
