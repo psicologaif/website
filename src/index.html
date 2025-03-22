@@ -16,11 +16,34 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
-    <script
-      src="https://www.google.com/recaptcha/api.js?render=explicit"
-      async
-      defer
-    ></script>
+    <script>
+      function onWhatsAppSubmit(token) {
+        window.open(getTextWhatsapp(), "_blank");
+      }
+
+      function onMailtoSubmit(token) {
+        window.location.href = getMailtoLink();
+      }
+
+      // Queste funzioni dovrebbero essere definite globalmente
+      function getTextWhatsapp() {
+        const number = "393286739086";
+        const text = encodeURIComponent(
+          "Salve Dottoressa, vorrei richiedere informazioni..."
+        );
+        return `https://wa.me/${number}?text=${text}`;
+      }
+
+      function getMailtoLink() {
+        const email = "psicologa.frale@gmail.com";
+        const subject = encodeURIComponent("Richiesta appuntamento");
+        const body = encodeURIComponent(
+          "Salve Dottoressa, vorrei richiedere informazioni..."
+        );
+        return `mailto:${email}?subject=${subject}&body=${body}`;
+      }
+    </script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeR1_wqAAAAAJaGf5BzrMenKEzwqFQ0oE8mYA8t"></script>
   </head>
   <body>
     <app-root></app-root>
