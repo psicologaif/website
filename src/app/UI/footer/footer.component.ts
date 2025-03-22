@@ -1,8 +1,10 @@
+// footer.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription, filter } from 'rxjs';
 import { contactInfo, getMailtoLink, getTextWhatsapp } from 'src/app/text';
+import { RecaptchaService } from 'src/app/services/recaptcha.service';
 
 @Component({
   selector: 'app-footer',
@@ -15,11 +17,12 @@ export class FooterComponent implements OnInit {
   currentUrl: string = '';
   isContactPage: boolean = false;
   private routerSubscription: Subscription | undefined;
-    contactInfo = contactInfo;
-    getMailtoLink = getMailtoLink;
-    getTextWhatsapp = getTextWhatsapp;
+  contactInfo = contactInfo;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private recaptchaService: RecaptchaService
+  ) {}
 
   ngOnInit() {
     this.currentUrl = this.router.url;
@@ -41,5 +44,19 @@ export class FooterComponent implements OnInit {
 
   private checkIfContactPage() {
     this.isContactPage = this.currentUrl === '/contatti';
+  }
+
+  openWhatsapp(event: Event): void {
+    event.preventDefault();
+    this.recaptchaService.executeRecaptcha('whatsapp', () => {
+      window.location.href = getTextWhatsapp();
+    });
+  }
+
+  openMailto(event: Event): void {
+    event.preventDefault();
+    this.recaptchaService.executeRecaptcha('mailto', () => {
+      window.location.href = getMailtoLink();
+    });
   }
 }

@@ -6,8 +6,13 @@
   <div class="container">
     <div class="grid">
       <!-- Prima colonna (sinistra) -->
-      <div class="col-12 md:col-6 md:pr-3 relative flex justify-content-center md:justify-content-start">
-        <ul class="list-none p-0 mx-auto md:mx-0 m-0" style="max-width: fit-content;">
+      <div
+        class="col-12 md:col-6 md:pr-3 relative flex justify-content-center md:justify-content-start"
+      >
+        <ul
+          class="list-none p-0 mx-auto md:mx-0 m-0"
+          style="max-width: fit-content"
+        >
           <li
             class="flex align-items-center gap-3 mb-2"
             style="cursor: default"
@@ -31,17 +36,22 @@
       </div>
 
       <!-- Seconda colonna (destra) -->
-      <div class="col-12 md:col-6 md:pl-3 flex justify-content-center md:justify-content-start">
-        <ul class="list-none p-0 mx-auto md:mx-0 m-0" style="max-width: fit-content;">
+      <div
+        class="col-12 md:col-6 md:pl-3 flex justify-content-center md:justify-content-start"
+      >
+        <ul
+          class="list-none p-0 mx-auto md:mx-0 m-0"
+          style="max-width: fit-content"
+        >
           <li class="flex align-items-center gap-3 mb-2">
             <i class="pi pi-whatsapp" style="color: #25d366"></i>
-            <a [href]="getTextWhatsapp()" class="no-underline">
+            <a (click)="openWhatsapp($event)" class="no-underline cursor-pointer">
               <p class="m-0">Contattami su WhatsApp</p>
             </a>
           </li>
           <li class="flex align-items-center gap-3">
             <i class="pi pi-envelope"></i>
-            <a [href]="getMailtoLink()" class="no-underline">
+            <a (click)="openMailto($event)" class="no-underline cursor-pointer">
               <p class="m-0">{{ contactInfo.email }}</p>
             </a>
           </li>
@@ -54,5 +64,5 @@
 <div
   class="footer w-full p-3 flex justify-content-center align-items-center text-center"
 >
-  ©2025 Ioana Frale | All Rights Reserved | Powered by Danilo Pichilli
+  © 2025 Dott.ssa Ioana Frale | C.F./P.IVA 02150460679 | Developed by Danilo Pichilli
 </div>
