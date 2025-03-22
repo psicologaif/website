@@ -51,3 +51,16 @@ i {
 img {
   border-radius: 50%;
 }
+
+/* Nel tuo file CSS */
+@media (max-width: 767px) {
+  .menu-transition {
+    transition: all 0.3s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+  }
+  
+  .menu-transition.show {
+    max-height: 500px; /* Altezza sufficiente per contenere tutti gli elementi */
+  }
+}

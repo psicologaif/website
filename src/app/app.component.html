@@ -2,13 +2,4 @@
 <main [ngClass]="{ 'fade-out': isRouteChanging, 'fade-in': !isRouteChanging }">
   <router-outlet></router-outlet>
 </main>
-<div style="display: none">
-  <div
-    id="g-recaptcha"
-    class="g-recaptcha"
-    data-sitekey="6LeR1_wqAAAAAJaGf5BzrMenKEzwqFQ0oE8mYA8t"
-    data-callback="onCaptchaSuccess"
-    data-size="invisible"
-  ></div>
-</div>
 <app-footer></app-footer>

@@ -19,6 +19,11 @@ export class NavBarComponent {
   menuVisible = false;
 
   toggleMenu() {
+    console.log(this.menuVisible);
     this.menuVisible = !this.menuVisible;
+  }
+
+  closeMenu() {
+    this.menuVisible = false;
   }
 }
