@@ -46,19 +46,45 @@ export class FooterComponent implements OnInit {
     this.isContactPage = this.currentUrl === '/contatti';
   }
 
-  onWhatsAppClick(event: Event): void {
-    event.preventDefault();
+  onWhatsAppClick(): void {
+    console.log('>>> Bottone WhatsApp cliccato');
 
-    this.recaptchaService.executeRecaptcha('whatsapp', () => {
-      window.open(getTextWhatsapp(), '_blank');
+    this.recaptchaService.executeRecaptcha('whatsapp', (token) => {
+      console.log(
+        '>>> Callback WhatsApp chiamata con token:',
+        token ? 'presente' : 'assente'
+      );
+
+      const whatsappUrl = getTextWhatsapp();
+      console.log('>>> Apertura WhatsApp URL:', whatsappUrl);
+
+      try {
+        window.open(whatsappUrl, '_blank');
+        console.log('>>> WhatsApp window.open eseguito con successo');
+      } catch (error) {
+        console.error('>>> Errore durante apertura WhatsApp:', error);
+      }
     });
   }
 
-  onMailtoClick(event: Event): void {
-    event.preventDefault();
+  onMailtoClick(): void {
+    console.log('>>> Bottone Email cliccato');
 
-    this.recaptchaService.executeRecaptcha('mailto', () => {
-      window.location.href = getMailtoLink();
+    this.recaptchaService.executeRecaptcha('mailto', (token) => {
+      console.log(
+        '>>> Callback Email chiamata con token:',
+        token ? 'presente' : 'assente'
+      );
+
+      const mailtoUrl = getMailtoLink();
+      console.log('>>> Apertura Mailto URL:', mailtoUrl);
+
+      try {
+        window.location.href = mailtoUrl;
+        console.log('>>> Mailto window.location.href eseguito con successo');
+      } catch (error) {
+        console.error('>>> Errore durante apertura Mailto:', error);
+      }
     });
   }
 }
