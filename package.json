@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-  "build": "ng build && npm run build:functions",
-  "build:functions": "tsc -p netlify/functions/tsconfig.json",
+    "build": "ng build && npm run build:functions",
+    "build:functions": "tsc -p netlify/functions/tsconfig.json",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
