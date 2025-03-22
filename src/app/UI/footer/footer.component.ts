@@ -49,13 +49,13 @@ export class FooterComponent implements OnInit {
   openWhatsapp(event: Event): void {
     event.preventDefault();
     this.recaptchaService.executeRecaptcha('whatsapp', () => {
-      window.location.href = getTextWhatsapp();
+      window.open(getTextWhatsapp(), '_blank');
     });
   }
 
   openMailto(event: Event): void {
     event.preventDefault();
-    this.recaptchaService.executeRecaptcha('mailto', () => {
+    this.recaptchaService.executeRecaptcha('mailTo', () => {
       window.location.href = getMailtoLink();
     });
   }

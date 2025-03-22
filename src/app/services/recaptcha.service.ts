@@ -5,11 +5,12 @@ declare global {
   interface Window {
     grecaptcha: any;
     onCaptchaSuccess: (token: string) => void;
+    recaptchaLoaded: boolean;
   }
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RecaptchaService {
   private captchaSubject = new Subject<string>();
@@ -32,18 +33,35 @@ export class RecaptchaService {
     this.actionCallbacks.set(actionId, callback);
 
     // Verifica se siamo in ambiente di sviluppo
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    if (
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1'
+    ) {
       console.log('Ambiente di sviluppo: bypass del reCAPTCHA');
       this.executeCallback(actionId);
       return;
     }
 
-    // Esegui reCAPTCHA
-    if (window.grecaptcha && window.grecaptcha.execute) {
-      window.grecaptcha.execute();
+    // Controlla se reCAPTCHA è stato caricato
+    if (
+      window.recaptchaLoaded &&
+      window.grecaptcha &&
+      window.grecaptcha.execute
+    ) {
+      try {
+        window.grecaptcha.execute();
+      } catch (error) {
+        console.error("Errore durante l'esecuzione di reCAPTCHA:", error);
+        alert(
+          'Si è verificato un errore durante la verifica di sicurezza. Riprova.'
+        );
+      }
     } else {
       console.error('reCAPTCHA non caricato correttamente');
-      this.executeCallback(actionId);
+      alert(
+        'Il sistema di sicurezza non è stato caricato correttamente. Ricarica la pagina e riprova.'
+      );
+      // NON eseguire il callback in caso di errore in produzione
     }
   }
 
@@ -51,7 +69,7 @@ export class RecaptchaService {
     if (token && this.pendingAction) {
       this.captchaSubject.next(token);
       this.executeCallback(this.pendingAction);
-      
+
       // Reset captcha
       if (window.grecaptcha && window.grecaptcha.reset) {
         window.grecaptcha.reset();
