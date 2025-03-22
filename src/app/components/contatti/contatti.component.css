@@ -1,0 +1,22 @@
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+li {
+  list-style: none;
+  gap: 5px;
+}
+
+li a,
+i, p {
+  color: var(--black_color);
+  font-size: 1.3rem;
+  gap: 10px;
+}
+
+.item:hover {
+  border-color: white;
+  color: var(--black_color);
+  cursor: pointer;
+}
