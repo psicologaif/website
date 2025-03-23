@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "replace-env": "node replace-env.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -24,6 +25,7 @@
     "primeng": "^16.4.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {

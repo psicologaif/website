@@ -41,4 +41,9 @@ export class CaptchaService {
       this.userAnswer = null;
     }
   }
+
+  cancelCaptcha() {
+    this.showCaptcha = false;
+    this.userAnswer = null;
+  }
 }

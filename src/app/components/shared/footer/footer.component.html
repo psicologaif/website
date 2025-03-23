@@ -67,16 +67,3 @@
   © 2025 Dott.ssa Ioana Frale | C.F./P.IVA 02150460679 | Developed by Danilo
   Pichilli
 </div>
-
-<p-dialog
-  [(visible)]="captchaService.showCaptcha"
-  [modal]="true"
-  header="Verifica"
-  [style]="{ width: '300px' }"
->
-  <div class="flex flex-column gap-3">
-    <p>{{ captchaService.captchaQuestion }}</p>
-    <input type="number" pInputText [(ngModel)]="captchaService.userAnswer" />
-    <button pButton label="Verifica" (click)="captchaService.verifyCaptcha()"></button>
-  </div>
-</p-dialog>

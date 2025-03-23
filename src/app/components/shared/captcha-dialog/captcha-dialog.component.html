@@ -1,0 +1,54 @@
+<p-dialog
+  [(visible)]="captchaService.showCaptcha"
+  [modal]="true"
+  [header]="'Verifica di sicurezza'"
+  [style]="{ width: '400px' }"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+  styleClass="captcha-dialog"
+  [closable]="true"
+  [closeOnEscape]="true"
+>
+  <div class="flex flex-column align-items-center p-3">
+    <i class="pi pi-shield text-5xl text-primary mb-3"></i>
+
+    <h3 class="text-center mt-0 mb-2">Dimostra di non essere un robot</h3>
+
+    <div class="w-full p-3 surface-100 border-round mb-4">
+      <span class="block font-semibold mb-2">{{
+        captchaService.captchaQuestion
+      }}</span>
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-calculator"></i></span>
+        <input
+          type="number"
+          pInputText
+          [(ngModel)]="captchaService.userAnswer"
+          placeholder="Inserisci la risposta"
+          class="w-full"
+          (keyup.enter)="captchaService.verifyCaptcha()"
+        />
+      </div>
+    </div>
+
+    <div class="flex justify-content-between w-full">
+      <button
+        pButton
+        pRipple
+        icon="pi pi-times"
+        label="Annulla"
+        class="p-button-outlined p-button-secondary"
+        (click)="captchaService.cancelCaptcha()"
+      ></button>
+      <button
+        pButton
+        pRipple
+        icon="pi pi-check"
+        label="Verifica"
+        class="p-button-primary"
+        (click)="captchaService.verifyCaptcha()"
+      ></button>
+    </div>
+  </div>
+</p-dialog>

@@ -2,21 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { contactInfo, getMailtoLink, getTextWhatsapp } from 'src/app/text';
 import { CaptchaService } from 'src/app/services/captcha.service';
-import { DialogModule } from 'primeng/dialog';
-import { InputTextModule } from 'primeng/inputtext';
-import { ButtonModule } from 'primeng/button';
-import { FormsModule } from '@angular/forms';
-
+import { CaptchaDialogComponent } from '../shared/captcha-dialog/captcha-dialog.component';
 @Component({
   selector: 'app-contatti',
   standalone: true,
-  imports: [
-    CommonModule,
-    DialogModule,
-    InputTextModule,
-    ButtonModule,
-    FormsModule,
-  ],
+  imports: [CommonModule, CaptchaDialogComponent],
   templateUrl: './contatti.component.html',
   styleUrls: ['./contatti.component.css'],
 })

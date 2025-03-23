@@ -4,12 +4,13 @@ import {
   NavigationEnd,
   NavigationStart,
   Router,
-  RouterOutlet,
+  RouterOutlet
 } from '@angular/router';
-import { NavBarComponent } from './UI/navbar/nav-bar.component';
-import { FooterComponent } from './UI/footer/footer.component';
+import { NavBarComponent } from './components/shared/navbar/nav-bar.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { filter } from 'rxjs';
+import { CaptchaDialogComponent } from './components/shared/captcha-dialog/captcha-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ import { filter } from 'rxjs';
     NavBarComponent,
     FooterComponent,
     HomeComponent,
+    CaptchaDialogComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],

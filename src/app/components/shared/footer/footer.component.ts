@@ -8,16 +8,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import { CaptchaService } from 'src/app/services/captcha.service';
+import { CaptchaDialogComponent } from '../captcha-dialog/captcha-dialog.component';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
   imports: [
     CommonModule,
-    DialogModule,
-    InputTextModule,
-    ButtonModule,
-    FormsModule,
+    CaptchaDialogComponent
   ],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
