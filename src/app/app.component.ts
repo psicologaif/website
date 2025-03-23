@@ -20,7 +20,6 @@ import { CaptchaDialogComponent } from './components/shared/captcha-dialog/captc
     RouterOutlet,
     NavBarComponent,
     FooterComponent,
-    HomeComponent,
     CaptchaDialogComponent
   ],
   templateUrl: './app.component.html',

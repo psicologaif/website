@@ -2,6 +2,11 @@
   --black_color: rgb(34, 34, 34);
 }
 
+:host {
+  --black_color: rgb(34, 34, 34);
+  --primary_color: rgb(246, 231, 218);
+}
+
 .fade-out {
   opacity: 0;
   transition: opacity 0.4s ease-out;
@@ -9,5 +14,20 @@
 
 .fade-in {
   opacity: 1;
-  transition: opacity 1.0s ease-in;
+  transition: opacity 1s ease-in;
+}
+
+:host ::ng-deep .p-button {
+  background-color: var(--primary_color) !important;
+  border-color: var(--primary_color) !important;
+  color: var(--black_color) !important;
+}
+
+:host ::ng-deep .p-button:hover {
+  background-color: rgba(131, 203, 236, 0.8) !important;
+  border-color: rgba(131, 203, 236, 0.8) !important;
+}
+
+:host ::ng-deep .p-card {
+  color: var(--black_color);
 }

@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map} from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { SHEET_ID } from '../constants';
 
-export interface Progetto {
+export interface Articolo {
   id: number;
   titolo: string;
   sottotitolo: string;
@@ -13,12 +14,13 @@ export interface Progetto {
 @Injectable({
   providedIn: 'root',
 })
-export class ProgettoService {
+export class ArticoloService {
   constructor(private http: HttpClient) {}
 
-  getProgettiDaGoogleSheetsAPI(sheetId: string): Observable<Progetto[]> {
-    const apiKey = (window as any).env?.API_KEY_GOOGLE_SHEETS || '';
-    console.log(apiKey);
+  getArticoliFromGoogleSheetsAPI(sheetId: string): Observable<Articolo[]> {
+    const apiKey =
+      (window as any).env?.API_KEY_GOOGLE_SHEETS ||
+      'AIzaSyDCOifPbw_c4U8O_yDG-V2YnjJpV_aav1A';
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/articoli?key=${apiKey}`;
 
     return this.http.get<any>(url).pipe(
@@ -31,37 +33,27 @@ export class ProgettoService {
             project[this.normalizeHeader(header)] = row[i] || '';
           });
 
-          return project as Progetto;
+          return project as Articolo;
         });
       })
     );
   }
 
-  private parseCSVRow(row: string): string[] {
-    // Gestione base delle virgolette e virgole in CSV
-    const result = [];
-    let insideQuotes = false;
-    let currentValue = '';
-
-    for (let i = 0; i < row.length; i++) {
-      const char = row[i];
-
-      if (char === '"') {
-        insideQuotes = !insideQuotes;
-      } else if (char === ',' && !insideQuotes) {
-        result.push(currentValue);
-        currentValue = '';
-      } else {
-        currentValue += char;
-      }
-    }
-
-    result.push(currentValue);
-    return result;
+  private normalizeHeader(header: string): string {
+    return header.replace(/^"(.*)"$/, '$1').toLowerCase();
   }
 
-  private normalizeHeader(header: string): string {
-    // Rimuovi virgolette e normalizza il nome dell'header
-    return header.replace(/^"(.*)"$/, '$1').toLowerCase();
+  getArticolo(id: string): Observable<Articolo> {
+    const sheetId = SHEET_ID;
+
+    return this.getArticoliFromGoogleSheetsAPI(sheetId).pipe(
+      map((progetti) => {
+        const progetto = progetti.find((p) => p.id.toString() === id);
+        if (!progetto) {
+          throw new Error('Articolo non trovato');
+        }
+        return progetto;
+      })
+    );
   }
 }

@@ -1,0 +1,22 @@
+a {
+  color: var(--black_color);
+  text-decoration: none;
+}
+
+:host ::ng-deep .p-ripple {
+  width: 2rem;
+  height: 2rem;
+}
+
+:host ::ng-deep .social-button {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+:host ::ng-deep .social-button:hover {
+  transform: scale(1.1);
+}

@@ -2,21 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription, filter } from 'rxjs';
-import { contactInfo, getMailtoLink, getTextWhatsapp } from 'src/app/text';
-import { DialogModule } from 'primeng/dialog';
-import { InputTextModule } from 'primeng/inputtext';
-import { ButtonModule } from 'primeng/button';
-import { FormsModule } from '@angular/forms';
+import { contactInfo } from 'src/app/text';
 import { CaptchaService } from 'src/app/services/captcha.service';
-import { CaptchaDialogComponent } from '../captcha-dialog/captcha-dialog.component';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
   imports: [
-    CommonModule,
-    CaptchaDialogComponent
-  ],
+    CommonModule  ],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
 })

@@ -1,0 +1,16 @@
+<div class="flex flex-wrap">
+  <div
+    *ngFor="let articolo of articoli"
+    class="p-2 w-full sm:w-6 md:w-4 lg:w-3"
+  >
+    <div>
+      <app-article
+        [header]="articolo.titolo"
+        [subheader]="articolo.sottotitolo"
+        [imageUrl]="articolo.immagine"
+        [description]="articolo.descrizione"
+        [projectId]="articolo.id"
+      ></app-article>
+    </div>
+  </div>
+</div>

@@ -3,11 +3,18 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
 import { contactInfo, getTextWhatsapp, getMailtoLink } from 'src/app/text';
+import { SidebarModule } from 'primeng/sidebar';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, ButtonModule, RouterModule, NgOptimizedImage],
+  imports: [
+    CommonModule,
+    ButtonModule,
+    RouterModule,
+    NgOptimizedImage,
+    SidebarModule,
+  ],
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css'],
 })
@@ -16,10 +23,9 @@ export class NavBarComponent {
   getMailtoLink = getMailtoLink;
   getTextWhatsapp = getTextWhatsapp;
 
-  menuVisible = false;
+  menuVisible: boolean = false;
 
   toggleMenu() {
-    console.log(this.menuVisible);
     this.menuVisible = !this.menuVisible;
   }
 

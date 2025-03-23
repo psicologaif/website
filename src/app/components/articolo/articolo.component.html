@@ -1,0 +1,169 @@
+<div class="container mx-auto px-3 md:px-4 lg:px-6 mb-2">
+  <div *ngIf="loading" class="flex justify-content-center my-6">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+
+  <div *ngIf="error" class="flex justify-content-center my-6">
+    <p-message severity="error" [text]="error"></p-message>
+  </div>
+
+  <div *ngIf="articolo" class="articolo-container mt-4">
+    <!-- Header dell'articolo -->
+    <div class="articolo-header mb-4 flex flex-column align-items-center">
+      <h1 class="text-4xl md:text-3xl sm:text-2xl font-bold mb-2 text-center">
+        {{ articolo.titolo }}
+      </h1>
+      <h2
+        class="text-2xl md:text-xl sm:text-lg text-secondary mb-3 text-center"
+      >
+        {{ articolo.sottotitolo }}
+      </h2>
+
+      <!-- Immagine dell'articolo responsive -->
+      <div
+        class="mb-4 flex justify-content-center"
+        style="width: 100%; overflow: hidden"
+      >
+        <div
+          style="height: 300px; width: 100%; max-width: 500px; overflow: hidden"
+          class="md:max-w-500"
+        >
+          <img
+            [src]="articolo.immagine"
+            [alt]="articolo.titolo"
+            style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 6px;
+            "
+          />
+        </div>
+      </div>
+
+      <!-- Condivisione social - responsive -->
+      <div class="flex flex-column align-items-center mb-4">
+        <span class="text-lg sm:text-base mb-2">Condividi:</span>
+        <div class="flex gap-2 flex-wrap justify-content-center">
+          <!-- Facebook -->
+          <button
+            class="p-button p-button-rounded p-button-outlined social-button"
+            (click)="shareOnFacebook()"
+          >
+            <i
+              class="pi pi-facebook"
+              style="font-size: 1.5rem; color: #1877f2"
+            ></i>
+          </button>
+
+          <!-- Instagram -->
+          <button
+            class="p-button p-button-rounded p-button-outlined social-button"
+            (click)="shareOnInstagram()"
+          >
+            <i
+              class="pi pi-instagram"
+              style="font-size: 1.5rem; color: #e4405f"
+            ></i>
+          </button>
+
+          <!-- Twitter/X -->
+          <button
+            class="p-button p-button-rounded p-button-outlined social-button"
+            (click)="shareOnTwitter()"
+          >
+            <i
+              class="pi pi-twitter"
+              style="font-size: 1.5rem; color: #1da1f2"
+            ></i>
+          </button>
+
+          <!-- LinkedIn -->
+          <button
+            class="p-button p-button-rounded p-button-outlined social-button"
+            (click)="shareOnLinkedIn()"
+          >
+            <i
+              class="pi pi-linkedin"
+              style="font-size: 1.5rem; color: #0a66c2"
+            ></i>
+          </button>
+
+          <!-- WhatsApp -->
+          <button
+            class="p-button p-button-rounded p-button-outlined social-button"
+            (click)="shareOnWhatsApp()"
+          >
+            <i
+              class="pi pi-whatsapp"
+              style="font-size: 1.5rem; color: #25d366"
+            ></i>
+          </button>
+
+          <!-- Copia link -->
+          <button
+            class="p-button p-button-rounded p-button-outlined social-button"
+            (click)="copyLink()"
+            pTooltip="Link copiato!"
+            [tooltipOptions]="tooltipOptions"
+          >
+            <i class="pi pi-copy" style="font-size: 1.5rem"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Contenuto dell'articolo -->
+      <div class="articolo-contenuto w-full">
+        <p class="line-height-3 text-lg md:text-base sm:text-sm">
+          {{ articolo.descrizione }}
+        </p>
+      </div>
+
+      <div class="flex justify-content-between mt-6 gap-3 w-full">
+        <div>
+          <!-- Versione mobile (solo icona) -->
+          <p-button
+            *ngIf="esisteArticoloPrecedente()"
+            class="sm:hidden"
+            icon="pi pi-arrow-left"
+            styleClass="p-button-outlined p-button-rounded"
+            (click)="navigaArticoloPrecedente()"
+          ></p-button>
+
+          <!-- Versione desktop (icona + testo) -->
+          <p-button
+            *ngIf="esisteArticoloPrecedente()"
+            class="hidden sm:block"
+            label="Articolo precedente"
+            icon="pi pi-arrow-left"
+            styleClass="p-button-outlined w-auto"
+            iconPos="left"
+            (click)="navigaArticoloPrecedente()"
+          ></p-button>
+        </div>
+
+        <div>
+          <!-- Versione mobile (solo icona) -->
+          <p-button
+            *ngIf="esisteArticoloSuccessivo()"
+            class="sm:hidden"
+            icon="pi pi-arrow-right"
+            styleClass="p-button-outlined p-button-rounded"
+            (click)="navigaArticoloSuccessivo()"
+          ></p-button>
+
+          <!-- Versione desktop (icona + testo) -->
+          <p-button
+            *ngIf="esisteArticoloSuccessivo()"
+            class="hidden sm:block"
+            label="Articolo successivo"
+            icon="pi pi-arrow-right"
+            styleClass="p-button-outlined w-auto"
+            iconPos="right"
+            (click)="navigaArticoloSuccessivo()"
+          ></p-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
