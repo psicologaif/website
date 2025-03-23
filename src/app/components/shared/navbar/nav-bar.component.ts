@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
 import { contactInfo, getTextWhatsapp, getMailtoLink } from 'src/app/text';
 import { SidebarModule } from 'primeng/sidebar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -23,6 +24,8 @@ export class NavBarComponent {
   getMailtoLink = getMailtoLink;
   getTextWhatsapp = getTextWhatsapp;
 
+  constructor(private router: Router) {}
+
   menuVisible: boolean = false;
 
   toggleMenu() {
@@ -31,5 +34,9 @@ export class NavBarComponent {
 
   closeMenu() {
     this.menuVisible = false;
+  }
+
+  isContactPage() {
+    return this.router.url === '/contatti';
   }
 }

@@ -5,7 +5,27 @@
 
 a {
   text-decoration: none;
-  color: #ffffff;
+  color: var(--black_color);
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 0 2px;
+  cursor: grab;
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--black_color);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+a:hover::after {
+  width: 100%;
 }
 
 li {
@@ -14,8 +34,9 @@ li {
 }
 
 li a,
-i, p {
-  color: var(--black_color);;
+i,
+p {
+  color: var(--black_color);
   font-size: 1.3rem;
   gap: 10px;
 }

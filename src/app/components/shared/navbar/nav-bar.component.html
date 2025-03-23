@@ -4,7 +4,7 @@
 >
   <p class="navbar-brand m-0 hidden sm:inline">Rimaniamo in contatto su:</p>
 
-  <div class="item">
+  <div>
     <a
       href="https://www.facebook.com/ioana.frale.12/"
       class="flex align-items-center gap-2"
@@ -14,7 +14,7 @@
     </a>
   </div>
 
-  <div class="item">
+  <div>
     <a
       href="https://www.instagram.com/psicologa.ioanafrale"
       class="flex align-items-center gap-2"
@@ -24,7 +24,7 @@
     </a>
   </div>
 
-  <div class="item">
+  <div>
     <a
       href="https://www.tiktok.com/@psicologateramo?_t=ZN-8ujxX2FAu4U&_r=1"
       class="flex align-items-center gap-2"
@@ -34,7 +34,7 @@
     </a>
   </div>
 
-  <div class="item">
+  <div>
     <a
       href="https://www.linkedin.com/in/ioana-frale-52701822b"
       class="flex align-items-center gap-2"
@@ -45,7 +45,7 @@
   </div>
 
   <!-- Hamburger menu button -->
-  <div class="item md:hidden ml-auto">
+  <div class="md:hidden ml-auto">
     <button
       pButton
       pRipple
@@ -59,7 +59,7 @@
 
 <!-- Main navbar -->
 <div
-  class="sub-navbar flex flex-column md:flex-row justify-content-between align-items-center p-3 col-12"
+  class="sub-navbar flex flex-column md:flex-row justify-content-between align-items-center col-12"
 >
   <div
     class="flex align-items-center justify-content-center w-full md:w-auto md:ml-4 mb-3 md:mb-0"
@@ -67,7 +67,7 @@
     <li class="flex flex-column md:flex-row align-items-center">
       <img ngSrc="assets/img/IMG_8850.jpeg" alt="logo" height="90" width="90" />
       <p
-        class="mt-2 md:mt-0 md:ml-2 text-center md:text-left"
+        class="md:ml-2 text-center md:text-left"
         style="font-family: 'Dancing Script', cursive; font-size: 1.5rem"
       >
         Dott.ssa Frale Ioana
@@ -95,27 +95,27 @@
       </div>
     </ng-template>
     <div class="flex flex-column align-items-center gap-3 mt-4">
-      <li class="item text-center py-2" routerLinkActive="active">
+      <li class="text-center py-2" routerLinkActive="active">
         <a routerLink="/home" (click)="closeMenu()">Home</a>
       </li>
 
-      <li class="item text-center py-2" routerLinkActive="active">
+      <li class="text-center py-2" routerLinkActive="active">
         <a routerLink="/chi-sono" (click)="closeMenu()">Chi sono</a>
       </li>
 
-      <li class="item text-center py-2" routerLinkActive="active">
+      <li class="text-center py-2" routerLinkActive="active">
         <a routerLink="/progetti" (click)="closeMenu()">Progetti</a>
       </li>
 
-      <li class="item text-center py-2" routerLinkActive="active">
+      <li class="text-center py-2" routerLinkActive="active">
         <a routerLink="/servizi" (click)="closeMenu()">Servizi</a>
       </li>
 
-      <li class="item text-center py-2" routerLinkActive="active">
+      <li class="text-center py-2" routerLinkActive="active">
         <a routerLink="/blog" (click)="closeMenu()">Blog</a>
       </li>
 
-      <li class="item text-center py-2" routerLinkActive="active">
+      <li class="text-center py-2" routerLinkActive="active">
         <a routerLink="/contatti" (click)="closeMenu()">Contatti</a>
       </li>
     </div>
@@ -125,28 +125,35 @@
   <ul
     class="hidden md:flex md:flex-row justify-content-center align-items-center gap-3 md:mr-4"
   >
-    <li class="item text-center" routerLinkActive="active">
+    <li class="text-center" routerLinkActive="active">
       <a routerLink="/home">Home</a>
     </li>
 
-    <li class="item text-center" routerLinkActive="active">
+    <li class="text-center" routerLinkActive="active">
       <a routerLink="/chi-sono">Chi sono</a>
     </li>
 
-    <li class="item text-center" routerLinkActive="active">
+    <li class="text-center" routerLinkActive="active">
       <a routerLink="/progetti">Progetti</a>
     </li>
 
-    <li class="item text-center" routerLinkActive="active">
+    <li class="text-center" routerLinkActive="active">
       <a routerLink="/servizi">Servizi</a>
     </li>
 
-    <li class="item text-center" routerLinkActive="active">
+    <li class="text-center" routerLinkActive="active">
       <a routerLink="/blog">Blog</a>
     </li>
 
-    <li class="item text-center" routerLinkActive="active">
+    <li class="text-center" routerLinkActive="active">
       <a routerLink="/contatti">Contatti</a>
     </li>
   </ul>
+</div>
+
+<div class="w-full py-2 text-center top-0 z-5" *ngIf="!isContactPage()">
+  <a routerLink="/contatti">
+    <i class="pi pi-calendar-plus mr-2"></i>
+    Prenota il tuo primo colloquio conoscitivo gratuito
+  </a>
 </div>
