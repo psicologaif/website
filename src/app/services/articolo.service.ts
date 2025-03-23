@@ -20,7 +20,7 @@ export class ArticoloService {
   getArticoliFromGoogleSheetsAPI(sheetId: string): Observable<Articolo[]> {
     const apiKey =
       (window as any).env?.API_KEY_GOOGLE_SHEETS ||
-      'AIzaSyDCOifPbw_c4U8O_yDG-V2YnjJpV_aav1A';
+      '';
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/articoli?key=${apiKey}`;
 
     return this.http.get<any>(url).pipe(
