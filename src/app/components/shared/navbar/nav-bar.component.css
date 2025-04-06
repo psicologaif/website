@@ -28,9 +28,7 @@ a:hover::after {
 }
 
 .active {
-  border: 1px solid var(--black_color);
-  border-radius: 0.5rem;
-  padding: 0.1rem 0.5rem;
+  text-decoration: underline;
   transition: all 0.3s ease;
 }
 

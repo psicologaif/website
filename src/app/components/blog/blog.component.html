@@ -1,16 +1,55 @@
-<div class="flex flex-wrap">
-  <div
-    *ngFor="let articolo of articoli"
-    class="p-2 w-full sm:w-6 md:w-4 lg:w-3"
-  >
-    <div>
-      <app-article
-        [header]="articolo.titolo"
-        [subheader]="articolo.sottotitolo"
-        [imageUrl]="articolo.immagine"
-        [description]="articolo.descrizione"
-        [projectId]="articolo.id"
-      ></app-article>
+<!-- Contenitore principale -->
+<div class="container mx-auto">
+  <!-- Contenitore con classe flex e text-right per assicurare posizionamento a destra -->
+  <div class="flex justify-end mb-4">
+    <!-- Barra di ricerca con width definita -->
+    <div class="p-input-icon-left ml-auto" style="width: 300px">
+      <i class="pi pi-search"></i>
+      <input
+        type="text"
+        pInputText
+        [(ngModel)]="searchText"
+        (input)="filtraArticoli()"
+        placeholder="Cerca articoli"
+        class="w-full p-2 pl-5"
+      />
     </div>
+  </div>
+
+  <!-- Indicatore di caricamento -->
+  <div *ngIf="loading" class="text-center py-8">
+    <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+    <p class="mt-2">Caricamento articoli in corso...</p>
+  </div>
+
+  <!-- Messaggio di errore -->
+  <div *ngIf="error" class="p-4 mb-4 bg-red-100 text-red-700 rounded-md">
+    {{ error }}
+  </div>
+
+  <!-- Grid degli articoli -->
+  <div class="flex flex-wrap">
+    <div
+      *ngFor="let articolo of articoliFiltrati"
+      class="p-2 w-full sm:w-6 md:w-4 lg:w-3"
+    >
+      <div>
+        <app-article
+          [header]="articolo.titolo"
+          [subheader]="articolo.sottotitolo"
+          [imageUrl]="articolo.immagine"
+          [description]="articolo.descrizione"
+          [projectId]="articolo.id"
+        ></app-article>
+      </div>
+    </div>
+  </div>
+
+  <!-- Messaggio quando non ci sono risultati -->
+  <div
+    *ngIf="!loading && !error && articoliFiltrati.length === 0"
+    class="text-center py-8"
+  >
+    <p>Nessun articolo trovato per la ricerca "{{ searchText }}".</p>
   </div>
 </div>
