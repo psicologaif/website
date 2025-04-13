@@ -1,26 +1,50 @@
 <div class="flex flex-column justify-content-center align-items-center">
-  <h1>Servizi</h1>
-  <p>
-    I servizi che offro si basano su
-    <strong
-      >ascolto attivo, massima riservatezza e creazione di un rapporto di
-      fiducia.</strong
-    >
-    In particolare mi occupo di supporto psicologico, potenziamento
-    dell'autostima e della crescita personale, orientamento professionale e/o
-    scolastico e gestione delle emozioni. Specializzata in diagnosi
-    psicopatologica e percorso di riabilitazione e/o psicoterapia attraverso
-    psicoeducazione, maggiore consapevolezza del sè e nuovi strumenti di
-    gestione e fronteggiamento del disagio. In particolare mi occupo di :
-  </p>
-  <div class="flex flex-wrap">
+  <div class="mb-4 p-3 border-round-lg surface-card shadow-1">
+    <p class="text-xl font-medium mb-3">Disponibile per:</p>
+    <div class="flex flex-wrap gap-3">
+      <div
+        class="cursor-pointer hover:shadow-3 transition-all transition-duration-200 p-3 border-round surface-hover"
+      >
+        <div class="flex flex-column align-items-center">
+          <i class="pi pi-user text-primary text-2xl mb-2"></i>
+          <span class="text-center">adolescenti ed adulti</span>
+        </div>
+      </div>
+      <div
+        class="cursor-pointer hover:shadow-3 transition-all transition-duration-200 p-3 border-round surface-hover"
+      >
+        <div class="flex flex-column align-items-center">
+          <i class="pi pi-globe text-primary text-2xl mb-2"></i>
+          <span class="text-center">colloqui in italiano e rumeno</span>
+        </div>
+      </div>
+      <div
+        class="cursor-pointer hover:shadow-3 transition-all transition-duration-200 p-3 border-round surface-hover"
+      >
+        <div class="flex flex-column align-items-center">
+          <i class="pi pi-users text-primary text-2xl mb-2"></i>
+          <span class="text-center">colloqui individuali e di gruppo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="grid">
     <div
-      *ngFor="let servizio of servizi"
-      class="p-2 w-full sm:w-6 md:w-4 lg:w-3"
+      *ngFor="let servizio of servizi; let i = index"
+      class="col-12 sm:col-6 md:col-6 lg:col-6 xl:col-6 p-2"
     >
-      <div class="flex flex-row justify-content-between align-items-center gap-2">
-        <img [src]="servizio.img" alt="" />
-        <p>{{ servizio.text }}</p>
+      <div
+        class="flex flex-row justify-content-evenly align-items-start gap-2 mini-card p-3 border-round-lg surface-card shadow-1 cursor-pointer hover:shadow-3 transition-all transition-duration-200"
+        style="min-height: 200px"
+      >
+        <img [src]="servizio.img" alt="" class="mt-2" />
+        <div class="flex flex-column h-full">
+          <h3 class="mt-0 mb-2">{{ servizio.titolo }}</h3>
+          <p class="text-color-secondary m-0 mb-2">
+            {{ servizio.sottoTitolo }}
+          </p>
+          <p class="m-0">{{ servizio.descrizione }}</p>
+        </div>
       </div>
     </div>
   </div>

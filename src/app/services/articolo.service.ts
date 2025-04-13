@@ -9,6 +9,14 @@ export interface Articolo {
   sottotitolo: string;
   immagine: string;
   descrizione: string;
+  sottotitolo1: string;
+  testo1: string;
+  sottotitolo2: string;
+  testo2: string;
+  sottotitolo3: string;
+  testo3: string;
+  sottotitoloconclusione: string;
+  testoconclusione: string;
 }
 
 @Injectable({

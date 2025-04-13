@@ -35,7 +35,6 @@ export class BlogComponent implements OnInit {
         this.articoli = data;
         this.articoliFiltrati = [...this.articoli];
         this.loading = false;
-        console.log('Articoli caricati:', this.articoli);
       },
       error: (error) => {
         console.error('Errore nel caricamento degli articoli', error);

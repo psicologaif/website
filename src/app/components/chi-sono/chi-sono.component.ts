@@ -10,13 +10,6 @@ import { Tooltip, TooltipModule } from 'primeng/tooltip';
   styleUrls: ['./chi-sono.component.css'],
 })
 export class ChiSonoComponent implements OnInit {
-  tooltipOptions = {
-    showDelay: 1,
-    autoHide: true,
-    hideDelay: 1,
-    tooltipEvent: 'focus' as const,
-    tooltipPosition: 'top' as const,
-  };
 
   constructor() {}
 

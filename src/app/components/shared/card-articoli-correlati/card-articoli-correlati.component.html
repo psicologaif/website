@@ -1,0 +1,34 @@
+<p-card
+  [style]="{
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column'
+  }"
+  (click)="goTo(articoloId)"
+>
+  <ng-template pTemplate="header">
+    <div
+      style="
+        height: 200px;
+        width: 100%;
+        overflow: hidden;
+        background-color: #f8f9fa;
+      "
+    >
+      <img
+        [src]="imageUrl"
+        [alt]="titolo"
+        style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px"
+      />
+    </div>
+  </ng-template>
+  <ng-template pTemplate="title">
+    <div class="flex align-items-center justify-content-between">
+      <h5 class="mt-0 mb-1">{{ titolo }}</h5>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="subtitle">
+    <h5 class="mt-0 mb-2 text-secondary">{{ sottotitolo }}</h5>
+  </ng-template>
+</p-card>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Articolo, ArticoloService } from 'src/app/services/articolo.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
@@ -9,6 +9,7 @@ import { MessageModule } from 'primeng/message';
 import { SHEET_ID } from 'src/app/constants';
 import { ShareService } from 'src/app/services/share.service';
 import { TooltipModule } from 'primeng/tooltip';
+import { CardArticoliCorrelatiComponent } from "../shared/card-articoli-correlati/card-articoli-correlati.component";
 
 @Component({
   selector: 'app-articolo',
@@ -19,7 +20,9 @@ import { TooltipModule } from 'primeng/tooltip';
     ProgressSpinnerModule,
     MessageModule,
     TooltipModule,
-  ],
+    RouterModule,
+    CardArticoliCorrelatiComponent
+],
   templateUrl: './articolo.component.html',
   styleUrls: ['./articolo.component.css'],
 })
@@ -28,6 +31,7 @@ export class ArticoloComponent implements OnInit {
   loading: boolean = true;
   error: string | null = null;
   tuttiArticoli: Articolo[] = [];
+  articoliCorrelati : Articolo[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -50,6 +54,7 @@ export class ArticoloComponent implements OnInit {
     this.articoloService.getArticoliFromGoogleSheetsAPI(SHEET_ID).subscribe({
       next: (articoli) => {
         this.tuttiArticoli = articoli;
+        this.articoliCorrelati = this.tuttiArticoli.filter((a) => a.id !== this.articolo?.id);
 
         this.route.params.subscribe((params) => {
           const id = params['id'];
