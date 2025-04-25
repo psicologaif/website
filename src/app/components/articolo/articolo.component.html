@@ -9,14 +9,16 @@
 
   <div class="grid">
     <!-- CONTENUTO ARTICOLO -->
-    <div *ngIf="articolo" class="col-8 articolo-container mt-4">
+    <div *ngIf="articolo" class="col-12 lg:col-8 articolo-container mt-4">
       <!-- Header dell'articolo -->
       <div class="articolo-header mb-4 flex flex-column align-items-center">
-        <h1 class="text-4xl md:text-3xl sm:text-2xl font-bold mb-2 text-center">
+        <h1
+          class="text-xl sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 text-center"
+        >
           {{ articolo.titolo }}
         </h1>
         <h2
-          class="text-2xl md:text-xl sm:text-lg text-secondary mb-3 text-center"
+          class="text-lg sm:text-lg md:text-xl lg:text-2xl text-secondary mb-3 text-center"
         >
           {{ articolo.sottotitolo }}
         </h2>
@@ -40,7 +42,11 @@
 
         <!-- Condivisione social - responsive -->
         <div class="flex flex-column align-items-center mb-4">
-          <span class="text-lg sm:text-base mb-2" style="color: var(--text_color);">Condividi:</span>
+          <span
+            class="text-lg sm:text-base mb-2"
+            style="color: var(--text_color)"
+            >Condividi:</span
+          >
           <div class="flex gap-2 flex-wrap justify-content-center">
             <!-- Facebook -->
             <button
@@ -113,54 +119,54 @@
         <div class="articolo-contenuto w-full">
           <p
             class="line-height-3 text-lg md:text-base sm:text-sm"
-            [innerHTML]="articolo.descrizione"
+            [innerHTML]="sanitizeHtml(articolo.descrizione)"
           ></p>
         </div>
         <div>
           <h2
             class="text-2xl md:text-xl sm:text-lg text-secondary mb-3"
-            [innerHTML]="articolo.sottotitolo1"
+            [innerHTML]="sanitizeHtml(articolo.sottotitolo1)"
           ></h2>
           <div class="articolo-contenuto w-full">
             <p
               class="line-height-3 text-lg md:text-base sm:text-sm"
-              [innerHTML]="articolo.testo1"
+              [innerHTML]="sanitizeHtml(articolo.testo1)"
             ></p>
           </div>
         </div>
         <div *ngIf="articolo.sottotitolo2">
           <h2
             class="text-2xl md:text-xl sm:text-lg text-secondary mb-3"
-            [innerHTML]="articolo.sottotitolo2"
+            [innerHTML]="sanitizeHtml(articolo.sottotitolo2)"
           ></h2>
           <div class="articolo-contenuto w-full">
             <p
               class="line-height-3 text-lg md:text-base sm:text-sm"
-              [innerHTML]="articolo.testo2"
+              [innerHTML]="sanitizeHtml(articolo.testo2)"
             ></p>
           </div>
         </div>
         <div *ngIf="articolo.sottotitolo3">
           <h2
             class="text-2xl md:text-xl sm:text-lg text-secondary mb-3"
-            [innerHTML]="articolo.sottotitolo3"
+            [innerHTML]="sanitizeHtml(articolo.sottotitolo3)"
           ></h2>
           <div class="articolo-contenuto w-full">
             <p
               class="line-height-3 text-lg md:text-base sm:text-sm"
-              [innerHTML]="articolo.testo3"
+              [innerHTML]="sanitizeHtml(articolo.testo3)"
             ></p>
           </div>
         </div>
         <div>
           <h2
             class="text-2xl md:text-xl sm:text-lg text-secondary mb-3"
-            [innerHTML]="articolo.sottotitoloconclusione"
+            [innerHTML]="sanitizeHtml(articolo.sottotitoloconclusione)"
           ></h2>
           <div class="articolo-contenuto w-full">
             <p
               class="line-height-3 text-lg md:text-base sm:text-sm"
-              [innerHTML]="articolo.testoconclusione"
+              [innerHTML]="sanitizeHtml(articolo.testoconclusione)"
             ></p>
           </div>
         </div>
@@ -169,7 +175,7 @@
         class="text-2xl md:text-xl sm:text-lg text-secondary mb-3 text-500"
         style="font-family: 'Dancing Script', cursive"
       >
-        Per approfondire l’argomento, richiedere informazioni, sostegno o aiuto,
+        Per approfondire l'argomento, richiedere informazioni, sostegno o aiuto,
         manda una mail a: psicologa.frale&#64;gmail.com.
         <br />
         <br />
@@ -177,7 +183,9 @@
         Psicologa e Psicoterapeuta
       </p>
     </div>
-    <div class="col-4 mt-4 articoli-correlati">
+
+    <!-- ARTICOLI CORRELATI - DESKTOP (visibile solo su desktop) -->
+    <div class="col-4 mt-4 articoli-correlati hidden lg:block">
       <div>
         <h2>Articoli correlati</h2>
         <ul>
@@ -192,7 +200,45 @@
         </ul>
       </div>
     </div>
+
+    <!-- LINGUETTA MOBILE ARTICOLI CORRELATI -->
+    <div
+      class="articoli-correlati-tab-container lg:hidden"
+      [class.active]="showMobileCorrelati"
+    >
+      <div
+        class="articoli-correlati-tab"
+        [class.active]="showMobileCorrelati"
+        (click)="toggleMobileCorrelati()"
+      >
+        <span>Articoli correlati</span>
+        <i
+          class="pi pi-chevron-up"
+          [style.transform]="
+            showMobileCorrelati ? 'rotate(180deg)' : 'rotate(0)'
+          "
+        ></i>
+      </div>
+
+      <div
+        class="articoli-correlati-content"
+        [class.active]="showMobileCorrelati"
+      >
+        <ul>
+          <li *ngFor="let articoloCorrelato of articoliCorrelati" class="mb-2">
+            <app-card-articoli-correlati
+              [articoloId]="articoloCorrelato.id"
+              [titolo]="articoloCorrelato.titolo"
+              [sottotitolo]="articoloCorrelato.sottotitolo"
+              [imageUrl]="articoloCorrelato.immagine"
+              (click)="showMobileCorrelati = false"
+            ></app-card-articoli-correlati>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
+
   <!-- NAVIGAZIONE -->
   <div class="flex justify-content-between mt-6 gap-3 w-full">
     <div>

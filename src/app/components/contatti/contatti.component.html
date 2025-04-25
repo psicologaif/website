@@ -1,6 +1,4 @@
-<div
-  class="flex flex-column lg:flex-row justify-content-between main-content"
->
+<div class="flex flex-column lg:flex-row justify-content-between main-content">
   <div class="column lg:w-6 w-full">
     <h2>Dove ricevo</h2>
     <ul class="list-none p-0">
@@ -24,35 +22,39 @@
     ></iframe>
   </div>
 
-  <div class="column lg:w-6 w-full">
-    <h2>Come contattarmi</h2>
-    <ul class="list-none p-0">
-      <li class="flex align-items-center gap-3 mb-3">
-        <i class="pi pi-phone"></i>
-        <a href="tel:+39 3286739086">
-          <p class="m-0">+39 3286739086</p>
-        </a>
-      </li>
-      <li class="flex align-items-center gap-3 mb-2">
-        <i class="pi pi-whatsapp"></i>
-        <a href="#" class="no-underline" (click)="openWhatsApp($event)">
-          <p class="m-0">Contattami su WhatsApp</p>
-        </a>
-      </li>
-      <li class="flex align-items-center gap-3">
-        <i class="pi pi-envelope"></i>
-        <a href="#" class="no-underline" (click)="openEmail($event)">
-          <p class="m-0">{{ contactInfo.email }}</p>
-        </a>
-      </li>
-    </ul>
+  <div class="column lg:w-6 w-full flex flex-column justify-content-between">
+    <div>
+      <h2>Come contattarmi</h2>
+      <ul class="list-none p-0">
+        <li class="flex align-items-center gap-3 mb-3">
+          <i class="pi pi-phone"></i>
+          <a href="tel:+39 3286739086">
+            <p class="m-0">+39 3286739086</p>
+          </a>
+        </li>
+        <li class="flex align-items-center gap-3 mb-2">
+          <i class="pi pi-whatsapp"></i>
+          <a href="#" class="no-underline" (click)="openWhatsApp($event)">
+            <p class="m-0">Contattami su WhatsApp</p>
+          </a>
+        </li>
+        <li class="flex align-items-center gap-3">
+          <i class="pi pi-envelope"></i>
+          <a href="#" class="no-underline" (click)="openEmail($event)">
+            <p class="m-0">{{ contactInfo.email }}</p>
+          </a>
+        </li>
+      </ul>
+    </div>
 
-    <h2>I miei orari</h2>
-    <ul class="list-none p-0">
-      <li class="flex align-items-center gap-3 mb-3" style="cursor: default">
-        <i class="pi pi-clock"></i>
-        <p class="m-0">Lunedì - Venerdì: 9:00 - 20:00</p>
-      </li>
-    </ul>
+    <div>
+      <h2>I miei orari</h2>
+      <ul class="list-none p-0">
+        <li class="flex align-items-center gap-3 mb-3" style="cursor: default">
+          <i class="pi pi-clock"></i>
+          <p class="m-0">Lunedì - Venerdì: 9:00 - 20:00</p>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

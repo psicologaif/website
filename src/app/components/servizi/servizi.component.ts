@@ -52,7 +52,7 @@ export class ServiziComponent {
     },
     {
       img: 'assets/img/webinar.jpeg',
-      titolo: 'Webinar psico educativi',
+      titolo: 'Webinar psicoeducativi',
       sottoTitolo:
         'Ti piacerebbe essere più informato ed approfondire alcune tematiche?',
       descrizione:

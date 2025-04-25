@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Articolo, ArticoloService } from 'src/app/services/articolo.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { Title, Meta } from '@angular/platform-browser';
+import { Title, Meta, DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MessageModule } from 'primeng/message';
@@ -26,12 +26,13 @@ import { CardArticoliCorrelatiComponent } from '../shared/card-articoli-correlat
   templateUrl: './articolo.component.html',
   styleUrls: ['./articolo.component.css'],
 })
-export class ArticoloComponent implements OnInit {
+export class ArticoloComponent implements OnInit, OnDestroy {
   articolo: Articolo | null = null;
   loading: boolean = true;
   error: string | null = null;
   tuttiArticoli: Articolo[] = [];
   articoliCorrelati: Articolo[] = [];
+  showMobileCorrelati: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,7 +40,8 @@ export class ArticoloComponent implements OnInit {
     private articoloService: ArticoloService,
     private shareService: ShareService,
     private titleService: Title,
-    private metaService: Meta
+    private metaService: Meta,
+    private sanitizer: DomSanitizer
   ) {}
 
   tooltipOptions = {
@@ -68,6 +70,10 @@ export class ArticoloComponent implements OnInit {
         console.error('Errore nel caricamento degli articoli', err);
       },
     });
+
+    this.route.params.subscribe(() => {
+      this.showMobileCorrelati = false;
+    });
   }
 
   caricaArticolo(id: string) {
@@ -79,11 +85,16 @@ export class ArticoloComponent implements OnInit {
 
     if (this.articolo) {
       this.loading = false;
-      this.titleService.setTitle(`${this.articolo.titolo} - Nome del Tuo Sito`);
+      this.titleService.setTitle(
+        `${this.articolo.titolo} - Psicologa Ioana Frale`
+      );
       this.metaService.updateTag({
         name: 'description',
         content: this.articolo.descrizione,
       });
+
+      // Aggiorna gli articoli correlati escludendo l'articolo corrente
+      this.aggiornaArticoliCorrelati();
     } else {
       this.articoloService.getArticolo(id).subscribe({
         next: (articolo) => {
@@ -92,12 +103,15 @@ export class ArticoloComponent implements OnInit {
 
           if (articolo) {
             this.titleService.setTitle(
-              `${articolo.titolo} - Nome del Tuo Sito`
+              `${articolo.titolo} - Psicologa Ioana Frale`
             );
             this.metaService.updateTag({
               name: 'description',
               content: articolo.descrizione,
             });
+
+            // Aggiorna gli articoli correlati escludendo l'articolo corrente
+            this.aggiornaArticoliCorrelati();
           }
         },
         error: (err) => {
@@ -106,6 +120,19 @@ export class ArticoloComponent implements OnInit {
           console.error("Errore nel caricamento dell'articolo", err);
         },
       });
+    }
+  }
+
+  aggiornaArticoliCorrelati(): void {
+    if (this.articolo && this.tuttiArticoli.length > 0) {
+      // Filtra gli articoli correlati escludendo l'articolo corrente
+      this.articoliCorrelati = this.tuttiArticoli.filter(
+        (a) => a.id !== this.articolo!.id
+      );
+
+      // Opzionalmente, puoi limitare il numero di articoli correlati o ordinarli
+      // per esempio, mostrare solo i 5 articoli più recenti:
+      // this.articoliCorrelati = this.articoliCorrelati.sort((a, b) => b.id - a.id).slice(0, 5);
     }
   }
 
@@ -204,5 +231,49 @@ export class ArticoloComponent implements OnInit {
 
   copyLink() {
     this.shareService.copyToClipboard(this.getShareableLink());
+  }
+
+  // Modifica di questa funzione nel componente
+  toggleMobileCorrelati(): void {
+    this.showMobileCorrelati = !this.showMobileCorrelati;
+    // Gestisce la classe container se necessario
+    const container = document.querySelector(
+      '.articoli-correlati-tab-container'
+    );
+    if (container) {
+      if (this.showMobileCorrelati) {
+        container.classList.add('active');
+      } else {
+        container.classList.remove('active');
+      }
+    }
+
+    // Gestisci anche il contenuto direttamente
+    const content = document.querySelector('.articoli-correlati-content');
+    if (content) {
+      if (this.showMobileCorrelati) {
+        content.classList.add('active');
+      } else {
+        content.classList.remove('active');
+      }
+    }
+
+    // Opzionale: Puoi anche aggiungere una classe al body per prevenire lo scroll
+    if (this.showMobileCorrelati) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }
+
+  ngOnDestroy() {
+    // ... codice esistente
+
+    // Rimuovere la classe no-scroll quando il componente viene distrutto
+    document.body.classList.remove('no-scroll');
+  }
+
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 }

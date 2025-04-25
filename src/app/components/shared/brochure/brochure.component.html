@@ -43,7 +43,7 @@
             <!-- Colonna destra (descrizione) -->
             <div class="page-description">
               <h2>{{ page.title }}</h2>
-              <p [innerHTML]="page.description"></p>
+              <p [innerHTML]="truncateDescription(page.description)"></p>
 
               <!-- Pulsante "Leggi tutto" (visibile solo su mobile) -->
               <button

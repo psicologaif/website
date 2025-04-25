@@ -2,11 +2,12 @@
   line-height: 0.05 !important;
 }
 
-:host ::ng-deep .p-sidebar-slow {
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-    left 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-    right 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+:host ::ng-deep .p-sidebar-header,
+:host ::ng-deep .p-sidebar-content,
+:host ::ng-deep .p-sidebar-footer {
+  background-color: var(--card_color);
 }
+
 a {
   text-decoration: none;
   color: var(--black_color);
