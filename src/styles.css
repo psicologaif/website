@@ -1,7 +1,22 @@
 :root {
-  --font-family-base: 'Roboto', sans-serif; 
+  --font-family-base: "Roboto", sans-serif;
+  --black_color: #2d1238;
+  --text_color: rgb(70, 42, 101);
+  --primary_color: linear-gradient(
+    to right,
+    rgb(252 254 252),
+    rgb(229 239 229),
+    rgb(229 239 229)
+  );
+  --secondary_color: rgb(44 9 57);
+  --card_color: rgb(173 147 168 / 10%);
+  --green_color: rgb(229 239 229);
 }
 
 * {
   font-family: var(--font-family-base);
+}
+
+h1, h2, h3, h4 {
+  color: var(--text_color);
 }

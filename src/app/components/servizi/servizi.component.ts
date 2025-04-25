@@ -16,7 +16,7 @@ export class ServiziComponent {
       sottoTitolo:
         'Ti capita di sentirti solo nei tuoi pensieri, come se gli altri non ti ascoltassero davvero?',
       descrizione:
-        'Attraverso un ascolto attivo, emaptico e senza giudizio, ti offro uno spazio riservato in cui poter esprimere liberamente i tuoi pensieri, emozioni e preoccupazioni.',
+        'Attraverso un ascolto attivo, empatico e senza giudizio, ti offro uno spazio riservato in cui poter esprimere liberamente i tuoi pensieri, emozioni e preoccupazioni.',
     },
     {
       img: 'assets/img/psicoterapia.jpeg',
@@ -52,7 +52,7 @@ export class ServiziComponent {
     },
     {
       img: 'assets/img/webinar.jpeg',
-      titolo: 'Webinar psico-educativi',
+      titolo: 'Webinar psico educativi',
       sottoTitolo:
         'Ti piacerebbe essere più informato ed approfondire alcune tematiche?',
       descrizione:

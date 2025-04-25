@@ -1,11 +1,42 @@
-img {
-    width: 100px;
-    height: 90px;
-    border-radius: 10px;
+.servizio-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .mini-card {
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card_color) !important;
+}
+
+/* Assicura che le card mantengano altezza uniforme per riga */
+.grid .col-12 {
+  display: flex;
+}
+
+/* Assicura che in modalità mobile le card si adattino correttamente */
+@media screen and (max-width: 576px) {
+  .mini-card .flex-row {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .mini-card .flex-column {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+i {
+  color: var(--text_color);
+}
+
+.surface-hover {
+  background-color: var(--card_color) !important;
 }

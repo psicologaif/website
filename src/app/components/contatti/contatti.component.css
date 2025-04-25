@@ -41,3 +41,9 @@ p {
   color: var(--black_color);
   cursor: pointer;
 }
+
+.main-content {
+  background-image: var(--primary_color); 
+  padding: 20px; 
+  gap: 20px;
+}

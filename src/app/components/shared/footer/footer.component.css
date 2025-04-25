@@ -2,6 +2,15 @@
   color: var(--black_color);
 }
 
+.main-footer {
+  background-image: linear-gradient(
+    to left,
+    rgb(252 254 252),
+    rgb(229 239 229),
+    rgb(229 239 229)
+  );;
+}
+
 a {
   text-decoration: none;
   color: var(--black_color);

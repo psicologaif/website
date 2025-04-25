@@ -1,0 +1,90 @@
+<div class="brochure-container">
+  <!-- Controlli di navigazione -->
+  <div class="brochure-controls">
+    <button
+      pButton
+      icon="pi pi-chevron-left"
+      class="p-button-rounded p-button-outlined"
+      [disabled]="currentPage === 0"
+      (click)="prevPage()"
+    ></button>
+    <span>Pagina {{ currentPage + 1 }} di {{ pages.length }}</span>
+    <button
+      pButton
+      icon="pi pi-chevron-right"
+      class="p-button-rounded p-button-outlined"
+      [disabled]="currentPage === pages.length - 1"
+      (click)="nextPage()"
+    ></button>
+  </div>
+
+  <!-- Contenitore del volantino -->
+  <div class="brochure-viewer">
+    <div
+      class="brochure-pages"
+      [ngStyle]="{ transform: 'translateX(' + -currentPage * 100 + '%)' }"
+    >
+      <!-- Ciclo attraverso tutte le pagine -->
+      <div
+        class="brochure-page"
+        *ngFor="let page of pages; let i = index"
+        [class.active]="i === currentPage"
+        [class.prev]="i === currentPage - 1"
+        [class.next]="i === currentPage + 1"
+      >
+        <div class="page-inner">
+          <div class="page-content">
+            <!-- Colonna sinistra (immagine) -->
+            <div class="page-image">
+              <img [src]="page.imageSrc" [alt]="page.title" />
+              <div class="page-number">{{ i + 1 }}</div>
+            </div>
+
+            <!-- Colonna destra (descrizione) -->
+            <div class="page-description">
+              <h2>{{ page.title }}</h2>
+              <p [innerHTML]="page.description"></p>
+
+              <!-- Pulsante "Leggi tutto" (visibile solo su mobile) -->
+              <button
+                pButton
+                icon="pi pi-eye"
+                label="Leggi tutto"
+                class="p-button-text read-more-btn"
+                (click)="openFullDescription(page)"
+              ></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Angolo che mostra l'effetto di sfoglio -->
+        <div
+          class="page-corner"
+          [class.flipping]="isFlipping && i === currentPage - 1"
+          *ngIf="i < pages.length - 1"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Indicatori di pagina (bullets) -->
+  <div class="brochure-indicators">
+    <span
+      *ngFor="let page of pages; let i = index"
+      class="indicator"
+      [class.active]="i === currentPage"
+      (click)="goToPage(i)"
+    ></span>
+  </div>
+
+  <!-- Overlay per la lettura a schermo intero (su mobile) -->
+  <div class="description-overlay" [class.active]="showDescriptionOverlay">
+    <div class="overlay-header">
+      <h2>{{ currentFullDescription?.title }}</h2>
+      <span class="overlay-close" (click)="closeFullDescription()">×</span>
+    </div>
+    <div class="overlay-content">
+      <p [innerHTML]="currentFullDescription?.description"></p>
+    </div>
+  </div>
+</div>

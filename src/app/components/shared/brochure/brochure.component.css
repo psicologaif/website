@@ -1,0 +1,367 @@
+/* Contenitore principale */
+.brochure-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Controlli di navigazione */
+.brochure-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.brochure-controls span {
+  font-size: 0.9rem;
+  color: #555;
+  min-width: 100px;
+  text-align: center;
+}
+
+/* Contenitore del visualizzatore */
+.brochure-viewer {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  background-color: #f8f8f8;
+  aspect-ratio: 16/9;
+  max-height: 600px;
+}
+
+/* Contenitore di tutte le pagine */
+.brochure-pages {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Pagina singola */
+.brochure-page {
+  min-width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+  transition: all 0.5s ease;
+}
+
+/* Contenuto interno della pagina */
+.page-inner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.page-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* Colonna immagine (sinistra) */
+.page-image {
+  flex: 0 0 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.brochure-page.active .page-image img {
+  transform: scale(1);
+}
+
+.brochure-page:not(.active) .page-image img {
+  transform: scale(0.95);
+}
+
+/* Numero di pagina */
+.page-number {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.8rem;
+}
+
+/* Colonna descrizione (destra) */
+.page-description {
+  flex: 0 0 50%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: var(--card_color);
+}
+
+.page-description h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text_color);
+  font-size: 1.5rem;
+}
+
+.page-description p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.read-more-btn {
+  display: none;
+  margin-top: 0.5rem;
+  align-self: center;
+  /* Assicura che il testo e l'icona siano centrati */
+  text-align: center;
+  justify-content: center;
+}
+
+/* Questo assicura che l'icona e il testo nel bottone siano allineati correttamente */
+:host ::ng-deep .read-more-btn .p-button-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:host ::ng-deep .read-more-btn .p-button-icon-left {
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .read-more-btn {
+    display: flex;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Effetto angolo che si sfoglia */
+.page-corner {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 50px 50px;
+  border-color: transparent transparent #f0f0f0 transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform-origin: bottom right;
+  z-index: 5;
+}
+
+.page-corner:hover,
+.page-corner.flipping {
+  border-width: 0 0 80px 80px;
+  border-color: transparent transparent #e0e0e0 transparent;
+}
+
+/* Effetto sfoglio attivo */
+.page-corner.flipping {
+  animation: flip-corner 1s forwards;
+}
+
+@keyframes flip-corner {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-20deg) scale(1.5);
+    border-color: transparent transparent #d0d0d0 transparent;
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Pagina attiva e adiacenti */
+.brochure-page.active {
+  z-index: 2;
+}
+
+.brochure-page.prev {
+  z-index: 1;
+}
+
+.brochure-page.next {
+  z-index: 0;
+}
+
+/* Indicatori di pagina (bullets) */
+.brochure-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 1.5rem;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  width: 30px;
+  border-radius: 10px;
+  background-color: var(--green_color);
+}
+
+/* Overlay per lettura a schermo intero su mobile */
+.description-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 1000;
+  padding: 20px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  animation: fadeIn 0.3s ease;
+}
+
+.description-overlay.active {
+  display: block;
+}
+
+.overlay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #eee;
+}
+
+.overlay-close {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #555;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .brochure-viewer {
+    aspect-ratio: 4/3;
+  }
+
+  .page-description {
+    padding: 1.5rem;
+  }
+
+  .page-description h2 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Layout per mobile ottimizzato */
+  .page-content {
+    flex-direction: column;
+  }
+
+  .page-image {
+    flex: 0 0 35%; /* Ridotto per dare più spazio alla descrizione */
+    height: 35%;
+  }
+
+  .page-description {
+    flex: 0 0 65%; /* Aumentato per dare più spazio alla descrizione */
+    height: 65%;
+    padding: 1rem 1.25rem;
+    overflow-y: auto; /* Permette lo scroll se il contenuto è troppo lungo */
+  }
+
+  .page-description h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .page-description p {
+    font-size: 1rem; /* Aumentato per migliore leggibilità */
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+
+  .page-corner {
+    border-width: 0 0 40px 40px;
+  }
+
+  .page-corner:hover,
+  .page-corner.flipping {
+    border-width: 0 0 60px 60px;
+  }
+}
+
+@media (max-width: 576px) {
+  .brochure-viewer {
+    aspect-ratio: 3/4; /* Ancora più verticale per dispositivi più piccoli */
+  }
+
+  .page-image {
+    height: 30%;
+  }
+
+  .page-description {
+    height: 70%;
+    padding: 0.75rem 1rem; /* Ulteriormente ottimizzato */
+  }
+
+  .page-description h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-description p {
+    font-size: 0.95rem; /* Leggermente ridotto ma ancora leggibile */
+  }
+
+  .page-corner {
+    border-width: 0 0 30px 30px;
+  }
+
+  .page-corner:hover,
+  .page-corner.flipping {
+    border-width: 0 0 45px 45px;
+  }
+}

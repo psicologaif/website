@@ -1,12 +1,3 @@
-:root {
-  --black_color: rgb(34, 34, 34);
-}
-
-:host {
-  --black_color: rgb(34, 34, 34);
-  --primary_color: rgb(246, 231, 218);
-}
-
 .fade-out {
   opacity: 0;
   transition: opacity 0.4s ease-out;
@@ -20,15 +11,32 @@
 :host ::ng-deep .p-button {
   background-color: var(--primary_color) !important;
   border-color: var(--primary_color) !important;
-  color: var(--black_color) !important;
+  color: var(--text_color) !important;
 }
 
 :host ::ng-deep .p-button:hover {
-  background-color: rgba(131, 203, 236, 0.8) !important;
-  border-color: rgba(131, 203, 236, 0.8) !important;
+  background-color: var(--green_color) !important;
+  border-color: var(--green_color) !important;
+  outline: var(--green_color) !important;
+}
+
+:host ::ng-deep .p-button:focus {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--green_color), 0 1px 2px 0 black;
 }
 
 :host ::ng-deep .p-card {
   color: var(--black_color);
 }
 
+:host ::ng-deep .p-inputtext:enabled:hover {
+  border-color: var(--green_color);
+}
+
+:host ::ng-deep .p-dialog .p-dialog-header {
+  color: var(--text_color);
+}
+
+
+:host ::ng-deep .p-card .p-card-body {
+  background-color: var(--card_color);
+}

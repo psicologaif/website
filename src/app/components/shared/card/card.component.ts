@@ -31,6 +31,7 @@ export class CardComponent {
   @Input() imageUrl: string = '';
   @Input() description: string = '';
   @Input() projectId?: number;
+  @Input() date?: Date;
   visible: boolean = false;
 
   tooltipOptions = {

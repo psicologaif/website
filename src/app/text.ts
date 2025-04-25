@@ -3,7 +3,7 @@ export const contactInfo = {
   subject: 'Richiesta appuntamento',
   body: `Salve Dottoressa,
 
-Mi chiamo [inserisci qui il tuo nome] e sono interessato/a a intraprendere un percorso di psicoterapia.
+Mi chiamo [inserisci qui il tuo nome] e sono interessato/a a intraprendere un percorso con lei.
 Vorrei chiederle un appuntamento per un primo colloquio conoscitivo, sarei disponibile per un incontro [inserisci online/in presenza]
 nei giorni [inserisci giorni/ore disponibilità].
 La ringrazio per la sua disponibilità ed attendo una sua risposta.

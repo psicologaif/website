@@ -17,6 +17,7 @@ export interface Articolo {
   testo3: string;
   sottotitoloconclusione: string;
   testoconclusione: string;
+  data: Date;
 }
 
 @Injectable({

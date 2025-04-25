@@ -2,6 +2,11 @@
   line-height: 0.05 !important;
 }
 
+:host ::ng-deep .p-sidebar-slow {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    left 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    right 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
 a {
   text-decoration: none;
   color: var(--black_color);
@@ -33,7 +38,7 @@ a:hover::after {
 }
 
 .sub-navbar {
-  background-color: rgb(246, 231, 218);
+  background-image: var(--primary_color);
 }
 
 .sub-navbar a {

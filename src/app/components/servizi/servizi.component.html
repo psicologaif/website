@@ -1,12 +1,12 @@
 <div class="flex flex-column justify-content-center align-items-center">
   <div class="mb-4 p-3 border-round-lg surface-card shadow-1">
-    <p class="text-xl font-medium mb-3">Disponibile per:</p>
+    <p class="text-xl font-medium mb-3" style="color: var(--text_color);">Disponibile per:</p>
     <div class="flex flex-wrap gap-3">
       <div
         class="cursor-pointer hover:shadow-3 transition-all transition-duration-200 p-3 border-round surface-hover"
       >
         <div class="flex flex-column align-items-center">
-          <i class="pi pi-user text-primary text-2xl mb-2"></i>
+          <i class="pi pi-user text-2xl mb-2"></i>
           <span class="text-center">adolescenti ed adulti</span>
         </div>
       </div>
@@ -14,36 +14,40 @@
         class="cursor-pointer hover:shadow-3 transition-all transition-duration-200 p-3 border-round surface-hover"
       >
         <div class="flex flex-column align-items-center">
-          <i class="pi pi-globe text-primary text-2xl mb-2"></i>
-          <span class="text-center">colloqui in italiano e rumeno</span>
+          <i class="pi pi-globe text-2xl mb-2"></i>
+          <span class="text-center">colloqui in italiano e romeno</span>
         </div>
       </div>
       <div
         class="cursor-pointer hover:shadow-3 transition-all transition-duration-200 p-3 border-round surface-hover"
       >
         <div class="flex flex-column align-items-center">
-          <i class="pi pi-users text-primary text-2xl mb-2"></i>
+          <i class="pi pi-users text-2xl mb-2"></i>
           <span class="text-center">colloqui individuali e di gruppo</span>
         </div>
       </div>
     </div>
   </div>
-  <div class="grid">
+
+  <div class="grid w-full mb-3">
     <div
       *ngFor="let servizio of servizi; let i = index"
       class="col-12 sm:col-6 md:col-6 lg:col-6 xl:col-6 p-2"
     >
       <div
-        class="flex flex-row justify-content-evenly align-items-start gap-2 mini-card p-3 border-round-lg surface-card shadow-1 cursor-pointer hover:shadow-3 transition-all transition-duration-200"
-        style="min-height: 200px"
+        class="mini-card p-3 border-round-lg surface-card shadow-1 cursor-pointer hover:shadow-3 transition-all transition-duration-200 h-full"
       >
-        <img [src]="servizio.img" alt="" class="mt-2" />
-        <div class="flex flex-column h-full">
-          <h3 class="mt-0 mb-2">{{ servizio.titolo }}</h3>
-          <p class="text-color-secondary m-0 mb-2">
-            {{ servizio.sottoTitolo }}
-          </p>
-          <p class="m-0">{{ servizio.descrizione }}</p>
+        <div class="flex flex-row align-items-start gap-3 h-full">
+          <div class="flex-shrink-0">
+            <img [src]="servizio.img" alt="" class="servizio-img" />
+          </div>
+          <div class="flex flex-column">
+            <h3 class="mt-0 mb-2">{{ servizio.titolo }}</h3>
+            <p class="text-color-secondary m-0 mb-2">
+              {{ servizio.sottoTitolo }}
+            </p>
+            <p class="m-0">{{ servizio.descrizione }}</p>
+          </div>
         </div>
       </div>
     </div>

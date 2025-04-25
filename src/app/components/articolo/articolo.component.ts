@@ -9,7 +9,7 @@ import { MessageModule } from 'primeng/message';
 import { SHEET_ID } from 'src/app/constants';
 import { ShareService } from 'src/app/services/share.service';
 import { TooltipModule } from 'primeng/tooltip';
-import { CardArticoliCorrelatiComponent } from "../shared/card-articoli-correlati/card-articoli-correlati.component";
+import { CardArticoliCorrelatiComponent } from '../shared/card-articoli-correlati/card-articoli-correlati.component';
 
 @Component({
   selector: 'app-articolo',
@@ -21,8 +21,8 @@ import { CardArticoliCorrelatiComponent } from "../shared/card-articoli-correlat
     MessageModule,
     TooltipModule,
     RouterModule,
-    CardArticoliCorrelatiComponent
-],
+    CardArticoliCorrelatiComponent,
+  ],
   templateUrl: './articolo.component.html',
   styleUrls: ['./articolo.component.css'],
 })
@@ -31,7 +31,7 @@ export class ArticoloComponent implements OnInit {
   loading: boolean = true;
   error: string | null = null;
   tuttiArticoli: Articolo[] = [];
-  articoliCorrelati : Articolo[] = [];
+  articoliCorrelati: Articolo[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -54,12 +54,13 @@ export class ArticoloComponent implements OnInit {
     this.articoloService.getArticoliFromGoogleSheetsAPI(SHEET_ID).subscribe({
       next: (articoli) => {
         this.tuttiArticoli = articoli;
-        this.articoliCorrelati = this.tuttiArticoli.filter((a) => a.id !== this.articolo?.id);
-
         this.route.params.subscribe((params) => {
           const id = params['id'];
           this.caricaArticolo(id);
         });
+        this.articoliCorrelati = this.tuttiArticoli.filter(
+          (a) => a.id !== this.articolo?.id
+        );
       },
       error: (err) => {
         this.error = 'Impossibile caricare gli articoli';

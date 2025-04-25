@@ -10,15 +10,24 @@ import { Tooltip, TooltipModule } from 'primeng/tooltip';
   styleUrls: ['./chi-sono.component.css'],
 })
 export class ChiSonoComponent implements OnInit {
+  @ViewChild('tooltip') tooltip!: Tooltip;
+  isMobile: boolean = false;
+  showTooltip: boolean = false;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
+  }
 
-  focusElement(event: Event): void {
+  focusElement(event: MouseEvent): void {
     event.stopPropagation();
 
-    const element = event.currentTarget as HTMLElement;
-    element.focus();
+    if (this.isMobile) {
+      this.showTooltip = !this.showTooltip;
+    }
   }
 }
