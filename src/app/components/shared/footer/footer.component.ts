@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { Subscription, filter } from 'rxjs';
 import { contactInfo } from 'src/app/text';
 import { CaptchaService } from 'src/app/services/captcha.service';
@@ -8,8 +8,7 @@ import { CaptchaService } from 'src/app/services/captcha.service';
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [
-    CommonModule  ],
+  imports: [CommonModule, RouterModule],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
 })

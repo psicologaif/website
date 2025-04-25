@@ -1,7 +1,4 @@
-<div
-  class="w-full py-3 main-footer"
-  *ngIf="!isContactPage"
->
+<div class="w-full py-3 main-footer" *ngIf="!isContactPage">
   <div class="container">
     <div class="grid">
       <!-- Prima colonna (sinistra) -->
@@ -64,7 +61,8 @@
   class="footer w-full flex justify-content-center align-items-center text-center"
 >
   <p>
-    © 2025 Dott.ssa Ioana Frale | C.F./P.IVA 02150460679 | Developed by
+    © 2025 Dott.ssa Ioana Frale | C.F./P.IVA 02150460679 |
+    <a [routerLink]="['/privacy-policy']">Privacy Policy</a> | Developed by
     <a href="https://www.linkedin.com/in/danilo-pichilli-18a7a1268">
       Danilo Pichilli</a
     >

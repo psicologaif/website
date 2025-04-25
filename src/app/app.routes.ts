@@ -7,6 +7,7 @@ import { ContattiComponent } from './components/contatti/contatti.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { ArticoloComponent } from './components/articolo/articolo.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,5 +18,6 @@ export const routes: Routes = [
   { path: 'contatti', component: ContattiComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'blog/articolo/:id', component: ArticoloComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent},
   { path: '**', component: NotFoundComponent },
 ];
