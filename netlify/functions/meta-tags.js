@@ -1,8 +1,8 @@
 // netlify/functions/meta-tags.js
-const axios = require("axios");
+import { get } from "axios";
 
 // Questa funzione sarà invocata quando un crawler di social media richiede un articolo
-exports.handler = async (event) => {
+export async function handler(event) {
   // Estrai l'ID dell'articolo dal percorso URL
   const path = event.path;
   const match = path.match(/\/blog\/articolo\/(\d+)/);
@@ -87,7 +87,7 @@ exports.handler = async (event) => {
       body: JSON.stringify({ error: "Errore del server" }),
     };
   }
-};
+}
 
 // Implementazione della funzione per recuperare i dati da Google Sheets API
 // Adattata dal tuo ArticoloService
@@ -103,7 +103,7 @@ async function getArticoloFromGoogleSheets(id) {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/articoli?key=${API_KEY}`;
 
     // Esegui la richiesta
-    const response = await axios.get(url);
+    const response = await get(url);
 
     if (
       !response.data ||
