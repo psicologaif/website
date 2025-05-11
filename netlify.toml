@@ -12,6 +12,14 @@
   to = "/sitemap.xml"
   status = 200
 
+[[redirects]]
+  from = "/blog/articolo/*"
+  to = "/.netlify/functions/meta-tags"
+  status = 200
+  force = false
+  conditions = {Referer = ["facebook.com", "twitter.com", "linkedin.com", "t.co", "l.facebook.com", "api.whatsapp.com"]}
+  headers = {User-Agent = ["facebookexternalhit*", "*Twitterbot*", "*LinkedInBot*", "*WhatsApp*"]}
+
 [[headers]]
   for = "/sitemap.xml"
   [headers.values]

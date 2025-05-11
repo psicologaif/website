@@ -68,6 +68,14 @@ img {
   width: 90px;
 }
 
+.w-full.py-2.text-center a {
+  text-decoration: underline !important;
+}
+
+.w-full.py-2.text-center a::after {
+  display: none;
+}
+
 /* Nel tuo file CSS */
 @media (max-width: 767px) {
   .menu-transition {
