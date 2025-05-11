@@ -65,9 +65,9 @@
     class="flex align-items-center justify-content-center w-full md:w-auto md:ml-4 mb-3 md:mb-0"
   >
     <li class="flex flex-column md:flex-row align-items-center">
-      <img src="assets/img/IMG_8850.jpeg" alt="logo" height="90" width="90" />
+      <img src="assets/img/IMG_8850.jpeg" alt="logo" />
       <p
-        class="md:ml-2 text-center md:text-left"
+        class="md:ml-2 text-center md:text-left m-0"
         style="font-family: 'Dancing Script', cursive; font-size: 1.5rem"
       >
         Dott.ssa Frale Ioana
@@ -151,7 +151,7 @@
 </div>
 
 <div class="w-full py-2 text-center top-0 z-5" *ngIf="!isContactPage()">
-  <a routerLink="/contatti">
+  <a routerLink="/contatti" style="text-decoration: underline;">
     <i class="pi pi-calendar-plus mr-2"></i>
     Prenota il tuo primo colloquio conoscitivo gratuito
   </a>

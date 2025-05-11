@@ -88,10 +88,15 @@ export class ArticoloComponent implements OnInit, OnDestroy {
       this.titleService.setTitle(
         `${this.articolo.titolo} - Psicologa Ioana Frale`
       );
+
+      // Aggiorna i meta tag standard
       this.metaService.updateTag({
         name: 'description',
         content: this.articolo.descrizione,
       });
+
+      // Usa il metodo del ShareService per impostare i meta tag per i social
+      this.impostaMetaTagSocial(this.articolo);
 
       // Aggiorna gli articoli correlati escludendo l'articolo corrente
       this.aggiornaArticoliCorrelati();
@@ -105,10 +110,15 @@ export class ArticoloComponent implements OnInit, OnDestroy {
             this.titleService.setTitle(
               `${articolo.titolo} - Psicologa Ioana Frale`
             );
+
+            // Aggiorna i meta tag standard
             this.metaService.updateTag({
               name: 'description',
               content: articolo.descrizione,
             });
+
+            // Usa il metodo del ShareService per impostare i meta tag per i social
+            this.impostaMetaTagSocial(articolo);
 
             // Aggiorna gli articoli correlati escludendo l'articolo corrente
             this.aggiornaArticoliCorrelati();
@@ -121,6 +131,24 @@ export class ArticoloComponent implements OnInit, OnDestroy {
         },
       });
     }
+  }
+
+  // Metodo helper che chiama il metodo del ShareService
+  impostaMetaTagSocial(articolo: Articolo): void {
+    // Assicurati che l'URL dell'immagine sia completo
+    let imageUrl = articolo.immagine || '';
+    if (imageUrl && !imageUrl.startsWith('http')) {
+      imageUrl = `${window.location.origin}${imageUrl}`;
+    }
+
+    // Chiama il metodo del ShareService
+    this.shareService.setArticleMetaTags({
+      id: articolo.id,
+      title: articolo.titolo,
+      subtitle: articolo.sottotitolo,
+      imageUrl: imageUrl,
+      description: articolo.descrizione,
+    });
   }
 
   aggiornaArticoliCorrelati(): void {
