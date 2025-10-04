@@ -27,14 +27,14 @@
         <h3 class="bio-card-title">Formazione</h3>
         <p>
           Il mio interesse per la Psicologia nasce al Liceo socio
-          psico-pedagogico da cui ho conseguito nel 2014 il diploma di maturità
+          psico-pedagogico da cui ho conseguito il diploma di maturità
           presso l'Istituto Statale G. Milli di Teramo. Ho proseguito gli studi
           conseguendo una prima laurea triennale in Scienze e Tecniche
-          Psicologiche, nel 2017, presso l'Università G. D'Annunzio di Chieti,
+          Psicologiche, presso l'Università G. D'Annunzio di Chieti,
           con una tesi compilativa dal titolo "La conclusione del percorso
           psicoterapeutico : Analisi di alcuni contributi".
           <br />
-          Nel 2019, presso la medesima Università, nel dipartimento di Medicina
+          Successivamente, presso la medesima Università, nel dipartimento di Medicina
           e Scienze della Salute, ho conseguito poi una seconda laurea in
           Psicologia Clinica e della Salute con votazione 110/110 e lode con una
           tesi sperimentale condotta presso gli Istituti Secondari di 1° grado
@@ -43,26 +43,19 @@
           studio condotto su un campione di adolescenti". <br />
           Dopo un anno di tirocinio formativo, svolto a Pescara presso il Centro
           di Psicologia Clinica e Centro di Psicologia Clinica e Psicosomatica,
-          ho conseguito l'iscrizione all'Albo dell'Ordine degli Psicologi
-          d'Abruzzo nel 2022 con il n. A 3682. Nel 2024, presso la scuola di
+          ho conseguito l'iscrizione all'Albo dell'Ordine degli Psicologi e delle Psicologhe
+          d'Abruzzo con il n. 3682 A. Presso la scuola di
           specializzazione quadriennale in Psicoterapia, Centro di Psicologia
           Clinica con sede a Pescara, ho conseguito il diploma in
           <span
-            [pTooltip]="tooltipContent"
-            tooltipPosition="top"
-            [showDelay]="250"
-            [hideDelay]="300"
-            [tooltipStyleClass]="'tooltip-custom'"
-            [tooltipOptions]="{ tooltipEvent: 'hover' }"
             class="text font-medium underline cursor-pointer"
-            (click)="focusElement($event)"
-            #tooltip
+            (click)="toggleContent()"
           >
-            Psicoterapia ad orientamento Cognitivo-Comportamentale (CBT)
+            Psicoterapia ad orientamento Cognitivo-Comportamentale (CBT).
           </span>
+            <i>Cliccaci su per maggiori dettagli sull'approccio utilizzato.</i>
         </p>
-        <div *ngIf="isMobile && showTooltip" class="mobile-tooltip">
-          <div class="tooltip-content">
+          <div *ngIf="showContent" class="tooltip-content">
             <span>
               La CBT è un approccio evidence based, che utilizza cioè dati
               comprovati e strategie validate dall'evidenza scientifica. Vengono
@@ -76,7 +69,6 @@
               tempo.
             </span>
           </div>
-        </div>
         <p>
           A completamento del mio curriculum professionale, ho conseguito esami
           nell'ambito dell'insegnamento presso l'Università di Teramo e di
@@ -122,19 +114,3 @@
     </div>
   </div>
 </div>
-
-<ng-template #tooltipContent>
-  <div class="tooltip-content">
-    <span>
-      La CBT è un approccio evidence based, che utilizza cioè dati comprovati e
-      strategie validate dall'evidenza scientifica. Vengono definiti obiettivi
-      chiari e personalizzati, si lavora su pensieri, emozioni e comportamenti
-      attraverso tecniche pratiche e mirate. Uno degli strumenti principali è la
-      ristrutturazione cognitiva, che aiuta a riconoscere e modificare i
-      pensieri disfunzionali che alimentano il disagio. Le strategie utilizzate
-      sono ad hoc, pensate per rispondere alle specifiche difficoltà del
-      paziente, allo scopo di promuovere cambiamenti concreti e duraturi nel
-      tempo.
-    </span>
-  </div>
-</ng-template>
