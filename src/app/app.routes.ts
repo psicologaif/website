@@ -8,6 +8,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { ArticoloComponent } from './components/articolo/articolo.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { RecensioniComponent } from './components/recensioni/recensioni.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,6 +18,7 @@ export const routes: Routes = [
   { path: 'servizi', component: ServiziComponent },
   { path: 'contatti', component: ContattiComponent },
   { path: 'blog', component: BlogComponent },
+  { path: 'recensioni', component: RecensioniComponent },
   { path: 'blog/articolo/:id', component: ArticoloComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent},
   { path: '**', component: NotFoundComponent },
