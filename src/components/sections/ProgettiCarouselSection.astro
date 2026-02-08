@@ -1,0 +1,199 @@
+---
+const progetti = [
+  {
+    id: 1,
+    titolo: "Ti Affido il mio cuore",
+    descrizione: "Progetto dell'Ente d'Ambito Sociale n.24 Gran Sasso - Laga in collaborazione con 'Le Ali Della Vita' per l'affido familiare. Workshop di mindfulness con coppie in formazione per l'affido. Insegnamento della presenza, resilienza e gestione emotiva.",
+    immagine: "/images/progetti/progetto-ti-affido-cuore.jpeg"
+  },
+  {
+    id: 2,
+    titolo: "AfFidati",
+    descrizione: "Progetto dell'Unione di Comuni Città Territori Val Vibrata. Psicoeducazione e formazione per singoli e coppie interessati all'affido familiare temporaneo. Discussione di motivazioni, aspettative e preoccupazioni. Sviluppo competenze comunicative.",
+    immagine: "/images/progetti/progetto-affidati.jpeg"
+  },
+  {
+    id: 3,
+    titolo: "Nuovi percorsi inclusivi",
+    descrizione: "Progetto ATS con multipli distretti sociali e ASL Teramo. Rivolto a persone svantaggiate per il reinserimento lavorativo. Ruolo: analisi di orientamento tramite colloqui e questionari di attitudini e caratteristiche personali.",
+    immagine: "/images/progetti/progetto-nuovi-percorsi.JPG"
+  },
+  {
+    id: 4,
+    titolo: "Mindfulness in gravidanza",
+    descrizione: "Progetto presso l'Ospedale di Teramo durante i corsi di preparazione al parto. Protocollo mindfulness per coppie in gravidanza. Può essere praticato individualmente o in gruppo. Riduce stress, ansia, insonnia, depressione e ansia post-partum.",
+    immagine: "/images/progetti/progetto-mindfulness-gravidanza.jpg"
+  },
+  {
+    id: 5,
+    titolo: "BenEssere a scuola",
+    descrizione: "Progetto dell'Istituto Comprensivo Statale 'San Nicolò Teramo4' per studenti fragili di terza media. Orientamento scolastico e professionale. Identificare punti di forza e vulnerabilità. Promuovere inclusione e partecipazione di studenti con disabilità.",
+    immagine: "/images/progetti/progetto-benessere-scuola.jpeg"
+  },
+  {
+    id: 6,
+    titolo: "Sportello di ascolto psicologico",
+    descrizione: "Liceo Scientifico Statale A. Einstein di Teramo. Ascolto e supporto psicologico individuale e di gruppo in classe. Focus sul benessere mentale durante l'adolescenza, crescita personale e prevenzione del disagio psicologico. Attività di gruppo su autostima ed empatia.",
+    immagine: "/images/progetti/progetto-sportello.jpg"
+  },
+  {
+    id: 7,
+    titolo: "TrovarSi",
+    descrizione: "Programma di mentoring e orientamento dell'Istituto Comprensivo R. Levi Montalcini di Civitella - Torricella. Sviluppare autostima e fiducia, gestire stress ed emozioni, sviluppare competenze sociali e comunicative. Esercizio 'Zaino di competenze' per riconoscere e valorizzare qualità personali.",
+    immagine: "/images/progetti/progetto-trovarsi.jpg"
+  }
+];
+---
+
+<section id="progetti" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-bold rounded-full mb-4">
+        Progetti
+      </span>
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-text mb-4">
+        I miei <span class="text-primary">Progetti</span>
+      </h2>
+      <p class="text-lg text-text/70 max-w-2xl mx-auto">
+        Iniziative e collaborazioni per promuovere il benessere psicologico
+      </p>
+    </div>
+
+    <!-- Swiper Carousel -->
+    <div class="progetti-swiper relative">
+      <div class="swiper-wrapper">
+        {progetti.map(progetto => (
+          <div class="swiper-slide">
+            <div class="progetto-card bg-secondary/30 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src={progetto.immagine}
+                  alt={progetto.titolo}
+                  class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div class="p-6 flex-1 flex flex-col">
+                <h3 class="text-2xl font-serif font-bold text-primary mb-3">
+                  {progetto.titolo}
+                </h3>
+                <p class="text-text/80 leading-relaxed flex-1">
+                  {progetto.descrizione}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Navigation -->
+      <div class="swiper-button-prev progetti-prev"></div>
+      <div class="swiper-button-next progetti-next"></div>
+
+      <!-- Pagination -->
+      <div class="swiper-pagination progetti-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Pagination } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+  import 'swiper/css/pagination';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    new Swiper('.progetti-swiper', {
+      modules: [Navigation, Pagination],
+      slidesPerView: 1,
+      spaceBetween: 30,
+      navigation: {
+        nextEl: '.progetti-next',
+        prevEl: '.progetti-prev',
+      },
+      pagination: {
+        el: '.progetti-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      },
+    });
+  });
+</script>
+
+<style>
+  .progetti-swiper {
+    padding-bottom: 4rem;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: var(--primary);
+    background: white;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+  }
+
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.1);
+  }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 1.25rem;
+  }
+
+  :global(.swiper-pagination-bullet) {
+    width: 0.75rem;
+    height: 0.75rem;
+    background: var(--primary);
+    opacity: 0.3;
+    transition: all 0.3s;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    opacity: 1;
+    width: 2rem;
+    border-radius: 0.375rem;
+  }
+
+  .progetto-card {
+    position: relative;
+  }
+
+  .progetto-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 60px 60px 0;
+    border-color: transparent var(--accent) transparent transparent;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 10;
+  }
+
+  .progetto-card:hover::before {
+    opacity: 0.8;
+  }
+
+  .progetto-card:hover {
+    transform: translateY(-0.5rem);
+  }
+</style>

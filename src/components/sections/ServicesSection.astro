@@ -1,0 +1,123 @@
+---
+const services = [
+  {
+    title: "Consulenza psicologica",
+    subtitle: "Ti capita di sentirti solo nei tuoi pensieri, come se gli altri non ti ascoltassero davvero?",
+    description: "Attraverso un ascolto attivo, empatico e senza giudizio, ti offro uno spazio riservato in cui poter esprimere liberamente i tuoi pensieri, emozioni e preoccupazioni.",
+    image: "/images/servizi/consulenza-psicologica.jpeg"
+  },
+  {
+    title: "Psicoterapia",
+    subtitle: "Hai la sensazione di essere bloccato in un circolo vizioso di pensieri e non sai come uscirne?",
+    description: "Un viaggio speciale che ti offre l'opportunità di esplorarti, identificare le tue trappole mentali, comprendere l'origine dei tuoi pensieri, delle tue emozioni e dei tuoi comportamenti per costruire una vita più autentica e soddisfacente.",
+    image: "/images/servizi/psicoterapia.jpeg"
+  },
+  {
+    title: "Crescita personale",
+    subtitle: "Vorresti scoprire come migliorare la tua autostima e fiducia in te stesso?",
+    description: "Per migliorare la tua autostima, promuovere una maggiore consapevolezza di te, vivere in armonia con i tuoi valori e sviluppare le tue risorse personali per affrontare al meglio le sfide quotidiane.",
+    image: "/images/servizi/crescita-personale.jpeg"
+  },
+  {
+    title: "Mindfulness",
+    subtitle: "Ti è mai capitato di avere la sensazione di star vivendo nel passato o nel futuro ma non nel presente?",
+    description: "Pratica che ti aiuta a diventare più consapevole del momento presente, riducendo stress e ansia. Porta benefici sia fisici che psicologici, migliorando la qualità della vita.",
+    image: "/images/servizi/mindfulness.jpeg"
+  },
+  {
+    title: "Orientamento scolastico e/o professionale",
+    subtitle: "Non sai quale istituto scolastico o universitario sia migliore per te?",
+    description: "Processo breve che ti aiuta a prendere decisioni informate riguardo al tuo percorso formativo o professionale, esplorando le tue attitudini, interessi e obiettivi.",
+    image: "/images/servizi/orientamento-scolastico-professionale.jpeg"
+  },
+  {
+    title: "Webinar psicoeducativi",
+    subtitle: "Ti piacerebbe essere più informato ed approfondire alcune tematiche?",
+    description: "Incontri strutturati di prevenzione, apprendimento e riflessione su temi di salute mentale e benessere psicologico, in formato online accessibile a tutti.",
+    image: "/images/servizi/webinar.jpeg"
+  }
+];
+---
+
+<section id="servizi" class="py-20 bg-secondary/30 relative overflow-hidden">
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <!-- Header -->
+    <div class="text-center mb-12 max-w-2xl mx-auto">
+      <span class="inline-block py-1 px-3 rounded-full bg-white text-primary uppercase tracking-wider text-xs font-bold mb-4 shadow-sm border border-primary/5">
+        Aree di Intervento
+      </span>
+      <h2 class="text-4xl lg:text-5xl font-bold font-serif text-text mb-6">
+        Come posso <span class="text-primary">Aiutarti</span>
+      </h2>
+      <p class="text-text/70 text-lg leading-relaxed">
+        Offro percorsi personalizzati, basati sull'evidenza scientifica, per aiutarti a superare le difficoltà e migliorare la qualità della tua vita.
+      </p>
+    </div>
+
+    <!-- Disponibile per -->
+    <div class="flex justify-center mb-12">
+      <div class="bg-white p-6 rounded-2xl shadow-sm border border-primary/5">
+        <p class="text-xl font-bold text-text mb-4 text-center">Disponibile per:</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <div class="flex flex-col items-center p-4 bg-secondary/30 rounded-xl hover:shadow-md transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-primary mb-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+            </svg>
+            <span class="text-center text-sm text-text/80 font-medium">adolescenti ed adulti</span>
+          </div>
+          <div class="flex flex-col items-center p-4 bg-secondary/30 rounded-xl hover:shadow-md transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-primary mb-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+            </svg>
+            <span class="text-center text-sm text-text/80 font-medium">colloqui in italiano e romeno</span>
+          </div>
+          <div class="flex flex-col items-center p-4 bg-secondary/30 rounded-xl hover:shadow-md transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-primary mb-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+            </svg>
+            <span class="text-center text-sm text-text/80 font-medium">colloqui individuali e di gruppo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+      {services.map(service => (
+        <div class="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-primary/5">
+          <div class="flex gap-4 items-start">
+            <div class="flex-shrink-0">
+              <img
+                src={service.image}
+                alt={service.title}
+                class="w-16 h-16 rounded-xl object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="flex-1">
+              <h3 class="font-serif font-bold text-xl text-text mb-2 group-hover:text-primary transition-colors">
+                {service.title}
+              </h3>
+              <p class="text-sm text-text/60 mb-3 italic">
+                {service.subtitle}
+              </p>
+              <p class="text-text/70 leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="mt-16 text-center">
+      <p class="text-text/80 mb-4">Non sai qual è il percorso più adatto a te?</p>
+      <a href="#contatti" class="btn btn-primary inline-flex items-center justify-center bg-primary text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-primary/90 transition-all hover:shadow-xl transform hover:-translate-y-0.5">
+        Richiedi un Primo Colloquio
+      </a>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,95 @@
+---
+/**
+ * Cookie Consent Banner
+ *
+ * Banner non invasivo per gestione consenso cookie GDPR.
+ * - Posizionato fixed bottom
+ * - Hidden di default, mostrato solo se necessario
+ * - Accessibile (ARIA, focus trap, ESC key)
+ */
+---
+
+<div
+  id="cookie-banner"
+  role="dialog"
+  aria-labelledby="cookie-banner-title"
+  aria-describedby="cookie-banner-description"
+  aria-hidden="true"
+  hidden
+  class="fixed bottom-0 left-0 right-0 z-50 px-4 py-4 sm:px-6 lg:px-8 animate-slide-up"
+>
+  <div
+    class="mx-auto max-w-7xl rounded-2xl border border-primary/20 bg-secondary p-4 shadow-2xl backdrop-blur-sm sm:p-6"
+  >
+    <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+      <!-- Testo -->
+      <div class="flex-1">
+        <h2 id="cookie-banner-title" class="text-lg font-semibold text-text">
+          🍪 Gestione Cookie
+        </h2>
+        <p id="cookie-banner-description" class="mt-2 text-sm text-text/80 sm:text-base">
+          Utilizziamo cookie tecnici per salvare le tue preferenze e cookie di analisi (Google
+          Analytics) per migliorare il sito. I cookie di analisi vengono attivati solo con il tuo
+          consenso esplicito.
+          <a
+            href="/cookie-policy"
+            class="inline-block font-medium text-primary underline hover:text-primary/80 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          >
+            Maggiori informazioni
+          </a>
+        </p>
+      </div>
+
+      <!-- Bottoni -->
+      <div class="flex flex-col gap-3 sm:flex-row lg:flex-shrink-0">
+        <button
+          type="button"
+          data-action="reject"
+          class="rounded-xl border-2 border-primary bg-transparent px-6 py-3 text-sm font-semibold text-primary transition-all hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 sm:text-base"
+        >
+          Rifiuta
+        </button>
+        <button
+          type="button"
+          data-action="accept"
+          class="rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-primary/90 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 sm:text-base"
+        >
+          Accetta tutti
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initCookieConsent } from "../../lib/cookie-consent";
+
+  // Inizializza cookie consent al caricamento della pagina
+  if (typeof window !== "undefined") {
+    document.addEventListener("DOMContentLoaded", () => {
+      initCookieConsent();
+    });
+  }
+</script>
+
+<style>
+  @keyframes slide-up {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+
+  /* Assicura che il banner non copra contenuto importante su mobile */
+  #cookie-banner {
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  }
+</style>

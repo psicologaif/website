@@ -1,0 +1,85 @@
+---
+import WhatsAppButton from "../ui/WhatsAppButton.astro";
+
+const heroImage = "/images/IMG_8850.jpeg";
+---
+
+<section id="hero" class="relative w-full min-h-[calc(100vh-80px)] flex items-center bg-gradient-to-b from-secondary to-white overflow-hidden">
+  <!-- Decoration Elements -->
+  <div class="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 transform translate-x-1/2 rounded-l-3xl"></div>
+  <div class="absolute bottom-0 left-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
+
+  <div class="container mx-auto px-4 py-12 lg:py-0">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      
+      <!-- Text Content -->
+      <div class="order-2 lg:order-1 relative z-10 text-center lg:text-left">
+        <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary uppercase tracking-wider text-xs font-bold mb-4">
+          Psicologa Psicoterapeuta a Teramo
+        </span>
+        
+        <h1 class="text-4xl lg:text-6xl font-bold font-serif text-text mb-6 leading-tight">
+          Ritrova il tuo <br />
+          <span class="text-primary relative inline-block">
+            Benessere
+            <svg class="absolute w-full h-3 -bottom-1 left-0 text-accent opacity-40" viewBox="0 0 100 10" preserveAspectRatio="none">
+              <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="8" fill="none" />
+            </svg>
+          </span>
+          Mentale
+        </h1>
+        
+        <p class="text-lg lg:text-xl text-text/80 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+          Percorsi di <strong>Psicoterapia Cognitivo Comportamentale</strong> personalizzati per affrontare ansia, depressione e momenti di difficoltà.
+          Ascolto empatico e professionalità al tuo servizio.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <WhatsAppButton mobileComplete={true} customClasses="text-lg px-8 py-4 shadow-xl hover:shadow-2xl hover:-translate-y-1" />
+          <a href="#chi-sono" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-primary/20 hover:border-primary text-primary font-semibold transition-all hover:bg-primary/5">
+            Scopri di più
+          </a>
+        </div>
+      </div>
+
+      <!-- Image Content -->
+      <div class="order-1 lg:order-2 relative flex justify-center lg:justify-end">
+        <div class="relative w-full max-w-md lg:max-w-lg">
+          <!-- Image Frame decoration -->
+          <div class="absolute inset-0 border-2 border-primary/20 rounded-t-[10rem] rounded-b-[2rem] transform translate-x-4 translate-y-4"></div>
+
+          <div class="relative rounded-t-[10rem] rounded-b-[2rem] overflow-hidden shadow-2xl">
+            <img
+              src={heroImage}
+              alt="Dott.ssa Ioana Frale - Psicologa Psicoterapeuta"
+              class="w-full h-auto object-cover aspect-[3/4]"
+              loading="eager"
+              fetchpriority="high"
+              width="600"
+              height="800"
+            />
+
+            <!-- Floating Badge -->
+            <div class="absolute bottom-8 left-0 right-0 mx-auto w-max bg-white/90 backdrop-blur-md px-6 py-3 rounded-full shadow-lg border border-primary/10 flex items-center gap-3">
+              <div class="flex -space-x-2">
+                 <!-- Fake avatars for social proof hint -->
+                <div class="w-8 h-8 rounded-full bg-primary/20 border-2 border-white"></div>
+                <div class="w-8 h-8 rounded-full bg-accent/20 border-2 border-white"></div>
+                <div class="w-8 h-8 rounded-full bg-secondary border-2 border-white flex items-center justify-center text-[10px] font-bold text-primary">+50</div>
+              </div>
+              <span class="text-sm font-medium text-text">Pazienti soddisfatti</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <!-- Scroll Down Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden lg:block text-primary/50">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</section>

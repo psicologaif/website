@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Privacy Policy | Dott.ssa Ioana Frale"
+  description="Informativa sulla Privacy ai sensi del GDPR."
+>
+  <section class="container mx-auto px-4 pt-32 pb-12 lg:pt-40 lg:pb-20">
+    <article
+      class="prose prose-lg max-w-3xl mx-auto prose-headings:font-serif prose-headings:text-primary prose-a:text-accent"
+    >
+      <h1>Privacy Policy</h1>
+      <p>Ultimo aggiornamento: {new Date().toLocaleDateString("it-IT")}</p>
+
+      <h2>Informativa sui Cookie di Google Maps</h2>
+
+      <p>
+        Il nostro sito web utilizza Google Maps per mostrare la nostra posizione
+        geografica. Questo servizio è fornito da Google LLC e potrebbe
+        utilizzare cookie o tecnologie simili quando interagisci con la mappa
+        incorporata.
+      </p>
+
+      <p>
+        I cookie utilizzati da Google Maps sono gestiti direttamente da Google e
+        servono a:
+      </p>
+      <ul>
+        <li>Garantire il corretto funzionamento della mappa</li>
+        <li>Ricordare le tue preferenze di visualizzazione</li>
+        <li>Fornire funzionalità di sicurezza</li>
+      </ul>
+
+      <p>
+        Non utilizziamo Google Maps per tracciare i nostri utenti o raccogliere
+        dati personali. Tuttavia, Google potrebbe raccogliere informazioni
+        sull'utilizzo del servizio Maps in conformità con la propria politica
+        sulla privacy.
+      </p>
+
+      <p>
+        Ti informiamo che Google sta modificando la gestione dei cookie di terze
+        parti nei browser. Queste modifiche potrebbero influenzare il
+        funzionamento dell'iframe di Google Maps sul nostro sito.
+      </p>
+
+      <p>
+        Per ulteriori informazioni su come Google utilizza i cookie, ti
+        invitiamo a consultare l'<a
+          href="https://policies.google.com/privacy"
+          target="_blank"
+          rel="noopener noreferrer">Informativa sulla privacy di Google</a
+        >
+        e l'<a
+          href="https://policies.google.com/technologies/cookies"
+          target="_blank"
+          rel="noopener noreferrer">Informativa sui cookie di Google</a
+        >.
+      </p>
+    </article>
+  </section>
+</BaseLayout>

@@ -1,0 +1,50 @@
+---
+/**
+ * Analytics Initialization Component
+ *
+ * Orchestrates GA4 initialization after cookie consent:
+ * - Listens for cookie consent event
+ * - Checks existing consent on page load
+ * - Loads GA4 script only when consent granted
+ */
+---
+
+<script>
+  import { initGoogleAnalytics } from "../../lib/analytics";
+  import { getCookieConsent } from "../../lib/cookie-consent";
+
+  // Get GA4 Measurement ID from environment
+  const GA4_ID = import.meta.env.PUBLIC_GA4_MEASUREMENT_ID;
+
+  if (!GA4_ID) {
+    console.warn(
+      "GA4_MEASUREMENT_ID non configurato. Analytics non verrà inizializzato.",
+    );
+  }
+
+  /**
+   * Inizializza GA4 se c'è consenso
+   */
+  function initIfConsented() {
+    if (!GA4_ID) return;
+
+    const consent = getCookieConsent();
+    if (consent === "accepted") {
+      initGoogleAnalytics(GA4_ID);
+    }
+  }
+
+  // Check consenso esistente (page refresh dopo aver accettato)
+  if (typeof window !== "undefined") {
+    document.addEventListener("DOMContentLoaded", () => {
+      initIfConsented();
+    });
+  }
+
+  // Listener per consenso nuovo (prima visita, click "Accetta")
+  document.addEventListener("cookie:consent-granted", () => {
+    if (GA4_ID) {
+      initGoogleAnalytics(GA4_ID);
+    }
+  });
+</script>

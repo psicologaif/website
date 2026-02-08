@@ -1,0 +1,169 @@
+---
+// Recensioni reali dai pazienti (iniziali per privacy)
+const recensioni = [
+  {
+    nome: "M.R.",
+    recensione: "Grazie dottoressa, la ringrazio davvero tanto ❤️. Non vedo l'ora di raccontarle un botto di cose! Decidere di intraprendere un percorso psicologico per me è stata una decisione difficile da prendere, però piano piano ho visto dei cambiamenti, specialmente per l'ansia (non mi sarei mai aspettata che degli esercizi potessero fare così tanto!). Quindi per me è già una grande conquista. Spero di migliorare ulteriormente, quando esco dal suo studio sono sempre di buon umore!",
+    voto: 5
+  },
+  {
+    nome: "G.B.",
+    recensione: "Veramente grazie di cuore per ciò che abbiamo realizzato insieme. Si, perchè se non era per te ora nulla sarebbe stato così. Sei stata, come ti accennavo sempre negli ultimi incontri, una salvezza per me e te ne sarò per sempre grata 🤍",
+    voto: 5
+  },
+  {
+    nome: "L.T.",
+    recensione: "Da questo percorso insieme porterò con me tutte le consapevolezze e la forza che ho costruito anche grazie a te. Grazie di cuore perchè sto vivendo con serenità e so che senza il tuo aiuto non sarebbe stato lo stesso. Grazie, davvero, per essere stata una guida per me e per avermi accompagnata fino a qui 💛",
+    voto: 5
+  },
+  {
+    nome: "T.C.",
+    recensione: "Grazie Dottoressa per il colloquio di oggi, già non devo l'ora di rivederla la prossima settimana :) Grazie ancora e buona giornata!",
+    voto: 5
+  },
+  {
+    nome: "P.N.",
+    recensione: "Le sedute con lei sono un grande dono, è come se stessi imparando a conoscere una nuova me, sicuramente migliore, è un grande percorso di crescita! grazie infinite!",
+    voto: 5
+  },
+  {
+    nome: "G.A.",
+    recensione: "Buongiorno Dottoressa, la volevo ringraziare perchè ripetere la tecnica che mi ha insegnato mi ha aiutata tanto. Ho capito che, come in ogni cosa, può esserci un'altra prospettiva di vedere le situazioni. Oggi ho cercato di viverla con più serenità quindi grazie! Mi è stata d'aiuto!",
+    voto: 5
+  },
+  {
+    nome: "C.L.",
+    recensione: "Salve Dottoressa, volevo dirle che alla fine ieri sono andata in università e ho fatto l'esame, è andato molto bene, sono riuscita a gestire meglio la mia ansia soprattutto il giorno prima dell'esame scacciando i miei pensieri intrusivi. Sicuramente devo fare ancora tanto lavoro, però sono contenta di quello che stiamo facendo insieme, grazie.",
+    voto: 5
+  },
+  {
+    nome: "F.S.",
+    recensione: "Durante le sedute porto a casa tante parole, piene di significato su cui riflettere. Da quando vengo da lei, è come se tutto intorno a me avesse ripreso a bollire! Ogni colore, profumo è più intenso e bello! Mi sento non più un'anima vagante, al contrario, ho la percezione di trovarmi al posto giusto in un contesto che non mi spaventa più come prima! Grazie per l'opportunità che mi sta dando di crescita, grazie per il dono dell'ascolto, dell'affetto, di stima. Grazie per essere una guida capace di rendere ogni difficoltà un esercizio di logica privo di devastazione interiore. Grazie! ❤️",
+    voto: 5
+  },
+  {
+    nome: "S.L.",
+    recensione: "Dopo ogni seduta sento di ritrovare me stesso e di poter affrontare tutto!",
+    voto: 5
+  },
+  {
+    nome: "D.G.",
+    recensione: "Parlarne con lei mi ha fatto stare decisamente meglio nei giorni a venire, quindi la ringrazio! ☺️",
+    voto: 5
+  }
+];
+---
+
+<section id="recensioni" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-bold rounded-full mb-4">
+        Recensioni
+      </span>
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-text mb-4">
+        Cosa dicono i miei <span class="text-primary">Pazienti</span>
+      </h2>
+      <p class="text-lg text-text/70 max-w-2xl mx-auto">
+        Testimonianze autentiche di chi ha intrapreso un percorso terapeutico
+      </p>
+    </div>
+
+    {recensioni.length === 0 ? (
+      <p class="text-center text-text/60">Le recensioni saranno disponibili a breve.</p>
+    ) : (
+      <div class="recensioni-swiper max-w-4xl mx-auto relative">
+        <div class="swiper-wrapper">
+          {recensioni.map(recensione => (
+            <div class="swiper-slide">
+              <div class="recensione-card text-center p-8 md:p-12 bg-secondary/30 rounded-2xl shadow-lg">
+                <!-- Star Rating -->
+                <div class="flex justify-center mb-6 gap-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <svg
+                      class={`w-6 h-6 ${i < recensione.voto ? 'text-accent' : 'text-gray-300'}`}
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+
+                <!-- Quote -->
+                <blockquote class="text-lg md:text-xl italic text-text/80 mb-6 md:mb-8 leading-relaxed">
+                  "{recensione.recensione}"
+                </blockquote>
+
+                <!-- Author -->
+                <div class="border-t border-primary/10 pt-6">
+                  <p class="font-serif font-bold text-primary text-xl">
+                    {recensione.nome}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Pagination -->
+        <div class="swiper-pagination recensioni-pagination mt-8"></div>
+      </div>
+    )}
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper';
+  import { Pagination, Autoplay } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/pagination';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const recensioniSwiper = document.querySelector('.recensioni-swiper');
+    if (!recensioniSwiper) return;
+
+    new Swiper('.recensioni-swiper', {
+      modules: [Pagination, Autoplay],
+      slidesPerView: 1,
+      spaceBetween: 30,
+      pagination: {
+        el: '.recensioni-pagination',
+        clickable: true,
+      },
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      loop: true,
+    });
+  });
+</script>
+
+<style>
+  .recensioni-swiper {
+    padding-bottom: 3rem;
+  }
+
+  .recensione-card {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  :global(.recensioni-pagination .swiper-pagination-bullet) {
+    width: 0.75rem;
+    height: 0.75rem;
+    background: var(--primary);
+    opacity: 0.3;
+    transition: all 0.3s;
+  }
+
+  :global(.recensioni-pagination .swiper-pagination-bullet-active) {
+    opacity: 1;
+    width: 2rem;
+    border-radius: 0.375rem;
+  }
+</style>

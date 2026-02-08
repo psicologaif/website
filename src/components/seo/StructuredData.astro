@@ -1,0 +1,20 @@
+---
+/**
+ * Structured Data Component
+ *
+ * Inietta JSON-LD structured data nel <head> della pagina
+ * per migliorare la visibilità nei risultati di ricerca (Rich Results)
+ */
+
+interface Props {
+  schemas: string[]; // Array di JSON-LD strings
+}
+
+const { schemas } = Astro.props;
+---
+
+{
+  schemas.map((schema) => (
+    <script type="application/ld+json" set:html={schema} />
+  ))
+}

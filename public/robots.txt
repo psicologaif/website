@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://psicologa-ioana-frale.netlify.app/sitemap.xml

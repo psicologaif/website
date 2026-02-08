@@ -1,0 +1,81 @@
+---
+const currentYear = new Date().getFullYear();
+
+const quickLinks = [
+  { name: "Home", href: "/" },
+  { name: "Chi Sono", href: "/#chi-sono" },
+  { name: "Servizi", href: "/#servizi" },
+  { name: "Progetti", href: "/#progetti" },
+  { name: "Blog", href: "/#blog" },
+  { name: "Recensioni", href: "/#recensioni" },
+  { name: "Contatti", href: "/#contatti" },
+];
+
+const legalLinks = [
+  { name: "Privacy Policy", href: "/privacy-policy" },
+  { name: "Cookie Policy", href: "/cookie-policy" },
+];
+---
+
+<footer class="bg-primary/5 border-t border-primary/10 mt-auto">
+  <div class="container mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+      
+      <!-- Brand & Description -->
+      <div>
+        <h3 class="font-serif text-2xl font-bold text-primary mb-4">Dott.ssa Ioana Frale</h3>
+        <p class="text-text/70 mb-4 max-w-sm mx-auto md:mx-0">
+          Psicologa Psicoterapeuta Cognitivo Comportamentale a Teramo. 
+          Supporto professionale per il tuo benessere mentale.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-bold text-text mb-4">Link Rapidi</h4>
+        <ul class="space-y-2">
+          {quickLinks.map(link => (
+            <li>
+              <a href={link.href} class="text-text/70 hover:text-primary transition-colors">
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h4 class="font-bold text-text mb-4">Contatti</h4>
+        <div class="space-y-2 text-text/70">
+          <p>📍 Via Giuseppe Urbani, 10 <br /> 64046 Montorio al Vomano (TE)</p>
+          <p>📧 <a href="mailto:psicologa.frale@gmail.com" class="hover:text-primary transition-colors">psicologa.frale@gmail.com</a></p>
+          <p>📞 <a href="tel:+393286739086" class="hover:text-primary transition-colors">+39 328 673 9086</a></p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-primary/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-text/50">
+      <p class="text-center md:text-left">
+        &copy; {currentYear} Dott.ssa Ioana Frale. C.F./P.IVA: 02150460679 |
+        Developed by <a
+          href="https://www.linkedin.com/in/danilo-pichilli-18a7a1268"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-primary transition-colors underline"
+        >
+          Danilo Pichilli
+        </a>
+      </p>
+      <div class="flex space-x-4 mt-4 md:mt-0">
+        {legalLinks.map(link => (
+          <a href={link.href} class="hover:text-primary transition-colors">
+            {link.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>

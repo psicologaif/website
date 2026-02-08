@@ -1,0 +1,104 @@
+---
+const aboutImage = "/images/hero/ioana-professional.jpg";
+
+const values = [
+  {
+    title: "Empatia",
+    description: "Accoglienza senza giudizio per costruire un rapporto di fiducia autentico.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>`
+  },
+  {
+    title: "Ascolto",
+    description: "Spazio sicuro dove ogni parola viene ascoltata con attenzione e rispetto.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" /></svg>`
+  },
+  {
+    title: "Concretezza",
+    description: "Strumenti pratici e strategie basate sull'evidenza scientifica.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>`
+  }
+];
+---
+
+<section id="chi-sono" class="py-20 bg-white overflow-hidden">
+  <div class="container mx-auto px-4">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      
+      <!-- Image Side (Left on Desktop) -->
+      <div class="order-2 lg:order-1 relative">
+        <!-- Decorator Blob -->
+        <div class="absolute -top-12 -left-12 w-64 h-64 bg-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+        <div class="absolute -bottom-12 -right-12 w-64 h-64 bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+        
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
+           <img 
+              src={aboutImage} 
+              alt="Dott.ssa Ioana Frale nel suo studio" 
+              class="w-full h-auto object-cover aspect-[4/5]"
+              loading="lazy"
+            />
+            <!-- Quote Card -->
+            <div class="absolute bottom-6 right-6 left-6 bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-4 border-accent">
+              <p class="font-serif italic text-text/80 text-lg">
+                "Ogni viaggio inizia con un primo passo verso se stessi."
+              </p>
+            </div>
+        </div>
+      </div>
+
+      <!-- Content Side (Right on Desktop) -->
+      <div class="order-1 lg:order-2">
+        <span class="inline-block py-1 px-3 rounded-full bg-secondary text-primary uppercase tracking-wider text-xs font-bold mb-4">
+          Chi Sono
+        </span>
+        <h2 class="text-4xl lg:text-5xl font-bold font-serif text-text mb-6">
+          Il mio approccio <br/><span class="text-primary">Terapeutico</span>
+        </h2>
+        
+        <div class="prose prose-lg text-text/80 mb-8">
+          <p>
+            Sono la <strong>Dott.ssa Ioana Frale</strong>, Psicologa e Psicoterapeuta specializzata in terapia Cognitivo Comportamentale.
+            Iscritta all'Ordine degli Psicologi d'Abruzzo n. 3682 A, ho conseguito la Laurea Magistrale in Psicologia Clinica e della Salute con 110/110 e lode presso l'Università G. D'Annunzio di Chieti.
+          </p>
+          <p>
+            Il mio percorso professionale include collaborazioni con istituzioni pubbliche, associazioni per l'affido familiare, scuole e attività clinica privata.
+            Lavoro con adolescenti e adulti, offrendo colloqui in italiano e romeno, sia individuali che di gruppo. La mia esperienza abbraccia l'ansia, i disturbi dell'umore, la crescita personale e la mindfulness.
+          </p>
+          <p>
+            Credo fermamente che la terapia sia un <strong>percorso collaborativo</strong>: attraverso l'ascolto empatico e l'astensione dal giudizio, possiamo costruire insieme strumenti concreti per affrontare le sfide della vita e ritrovare il benessere.
+          </p>
+        </div>
+
+        <!-- Values Grid -->
+        <div class="grid sm:grid-cols-3 gap-6 mt-12">
+          {values.map(value => (
+            <div class="group p-4 rounded-xl hover:bg-secondary/50 transition-colors border border-transparent hover:border-primary/10">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+                <span set:html={value.icon} />
+              </div>
+              <h3 class="font-serif font-bold text-lg mb-2">{value.title}</h3>
+              <p class="text-sm text-text/70 leading-relaxed">{value.description}</p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+</style>

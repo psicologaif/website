@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
+import AboutSection from '../components/sections/AboutSection.astro';
+import ServicesSection from '../components/sections/ServicesSection.astro';
+import ProgettiCarouselSection from '../components/sections/ProgettiCarouselSection.astro';
+import BlogCarouselSection from '../components/sections/BlogCarouselSection.astro';
+import RecensioniCarouselSection from '../components/sections/RecensioniCarouselSection.astro';
+import ContactSection from '../components/sections/ContactSection.astro';
+
+export const prerender = true;
+---
+
+<BaseLayout title="Psicologa Ioana Frale | Home">
+	<HeroSection />
+	<AboutSection />
+	<ServicesSection />
+	<ProgettiCarouselSection />
+	<BlogCarouselSection />
+	<RecensioniCarouselSection />
+	<ContactSection />
+</BaseLayout>
+
+<script>
+	import { getCookieConsent } from '../lib/cookie-consent';
+	import { setupWhatsAppTracking, setupScrollDepthTracking } from '../lib/analytics';
+
+	/**
+	 * Inizializza tracking GA4 avanzato
+	 * - WhatsApp button click tracking
+	 * - Scroll depth tracking per tutte le sezioni
+	 */
+	function initTracking() {
+		// Setup tracking WhatsApp
+		setupWhatsAppTracking();
+
+		// Setup tracking scroll depth per tutte le sezioni della homepage
+		const sectionIds = [
+			'hero',
+			'chi-sono',
+			'servizi',
+			'progetti',
+			'blog',
+			'recensioni',
+			'contatti'
+		];
+		setupScrollDepthTracking(sectionIds);
+
+		console.log('GA4: Tracking avanzato inizializzato');
+	}
+
+	// Inizializza tracking se consenso già dato (page refresh)
+	if (typeof window !== 'undefined') {
+		document.addEventListener('DOMContentLoaded', () => {
+			const consent = getCookieConsent();
+			if (consent === 'accepted') {
+				initTracking();
+			}
+		});
+	}
+
+	// Listener per consenso nuovo (prima visita, click "Accetta")
+	document.addEventListener('cookie:consent-granted', () => {
+		// Small delay per permettere a GA4 di inizializzarsi
+		setTimeout(() => {
+			initTracking();
+		}, 500);
+	});
+</script>
+
