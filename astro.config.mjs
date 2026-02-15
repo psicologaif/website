@@ -3,7 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import netlify from "@astrojs/netlify";
 
 export default defineConfig({
-  site: "https://psicologa-ioana-frale.netlify.app",
+  site: "https://psicologaioanafrale.netlify.app",
   integrations: [tailwind()],
   output: "server",
   adapter: netlify(),
