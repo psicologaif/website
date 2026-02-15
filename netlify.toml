@@ -16,12 +16,6 @@
   to = "/"
   status = 301
 
-[[redirects]]
-  from = "/articolo/:id"
-  to = "/#blog"
-  status = 200
-  force = false
-
 [[headers]]
   for = "/*"
   [headers.values]
